@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Feature</title>
+    <!-- Include html2canvas from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="content">
+        <h1>This is a screenshot example
+            HELLO Shashank
+        </h1>
+        <p>You can capture the entire screen as a screenshot.</p>
+    </div>
+
+    <button onclick="takeScreenshot()">Capture Screenshot</button>
+
+    <script>
+        // Function to capture screenshot of the entire screen
+        function takeScreenshot() {
+            // Capture the entire window
+            html2canvas(document.documentElement).then(canvas => {
+                // Convert canvas to image URL
+                const screenshotUrl = canvas.toDataURL('image/png');
+                // Trigger download of the screenshot
+                triggerDownload(screenshotUrl);
+            });
+        }
+
+        // Function to trigger download of the screenshot
+        function triggerDownload(url) {
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'screenshot.png';
+            // Append the link to the document body
+            document.body.appendChild(link);
+            // Trigger the click event on the link
+            link.click();
+            // Remove the link from the document body
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

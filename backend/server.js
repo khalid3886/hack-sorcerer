@@ -1,6 +1,6 @@
 // const express = require('express')
 // const path = require('path');
-// const cors=require('cors')
+const cors=require('cors')
 // const app = express()
 // const {connection}=require('./db')
 // const {userRouter}=require("./route/user.route")
@@ -85,16 +85,26 @@ const path = require('path');
 const express = require('express')
 const http = require('http')
 const moment = require('moment');
+
+const {connection}=require('./db')
+const {userRouter}=require("./route/user.route")
 const socketio = require('socket.io');
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.use(express.json())
+
+app.use(cors())
+app.use('/users',userRouter)
 const server = http.createServer(app);
 
 const io = socketio(server);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, '../frontend/signup')));
+// app.get("/backend/public/index.html", (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+//   });
+// console.log(path.join(__dirname, '../frontend'));
 let rooms = {};
 let socketroom = {};
 let socketname = {};
@@ -154,6 +164,7 @@ io.on('connect', socket => {
     })
 
     socket.on('message', (msg, username, roomid) => {
+        console.log("hey")
         io.to(roomid).emit('message', msg, username, moment().format(
             "h:mm a"
         ));
@@ -195,5 +206,14 @@ io.on('connect', socket => {
 
 
 // EMOJIS
-
-server.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));
+server.listen(process.env.PORT||8080,async()=>{
+      console.log('server is running')
+      try{
+        await connection
+        console.log('connected to db')
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+    })

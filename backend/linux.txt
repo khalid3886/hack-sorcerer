@@ -1,0 +1,32 @@
+
+- yum install httpd -y ==>( To Install Apache WEB SERVER ) ....
+
+- cd /var/www/html/ ==> inside this directory we have to placed the all our frontend code.
+
+- wget downloadLink =>(we download the zip of our frontend code).
+
+- unzip filename
+
+- Notes : after unziping the code we need to copy all the files and paste into the above directory.(cd /var/www/html/).
+
+- cp -rvf * /var/www/html/
+
+- systemctl restart httpd
+
+
+docker build -t appname .
+
+docker tag appname dockerusername/appname
+
+docker push username/appname
+
+docker pull username/appname
+
+docker run -d -p port:prot username/appname
+
+step 1 => sudo yum install docker (docker info to check whether docker is install or not).
+step 2 -> sudo usermod -aG docker ec2-user
+step 3 -> reboot the system.
+step 4 -> sudo service docker start
+docker pull username/appname
+docker run -d -p port:prot username/appname

@@ -1,5 +1,4 @@
-// const express = require('express')
-// const path = require('path');
+
 const cors=require('cors')
 // const app = express()
 // const {connection}=require('./db')
@@ -79,7 +78,6 @@ const cors=require('cors')
 //     console.log(err)
 // }
 // })
-
 
 const path = require('path');
 const express = require('express')

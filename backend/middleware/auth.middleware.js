@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { redis } = require('../controller/redis.controller');
+//const { redis } = require('../controller/redis.controller');
 
 const auth = async (req, res, next) => {
     const token = req.headers.authorization?.split(" ")[1];

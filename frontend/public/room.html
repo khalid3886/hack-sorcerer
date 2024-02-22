@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>QuickMeet Room</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/6510466b6c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css" integrity="sha512-0Nyh7Nf4sn+T48aTb6VFkhJe0FzzcOlqqZMahy/rhZ8Ii5Q9ZXG/1CbunUuEbfgxqsQfWXjnErKZosDSHVKQhQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script>
+        const params = new URLSearchParams(location.search);
+        if (!params.get("room")) location.href = "/";
+    </script>
+</head>
+
+<body id="sscontent">
+    <div class="overlay" id="overlay">
+        <div class="box">
+            <div class="head-name">Enter a Name</div>
+            <input type="text" class="name-field" placeholder="Type here.." id="name-field"></input><br>
+            <button class="continue-name">Continue</button>
+
+        </div>
+    </div>
+    <div class="container-room">
+        <div class="left-cont">
+
+            <div class="video-cont-single" id="vcont">
+                <div class="video-box">
+                    <video class="video-frame" id="vd1" autoplay playsinline>
+                        
+                    </video>
+                    <div class="nametag" id="myname">yourname</div>
+                    <div class="mute-icon" id="mymuteicon"><i class="fas fa-microphone-slash"></i></div>
+                    <div class="video-off" id="myvideooff">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="whiteboard-cont"><canvas id="whiteboard" height="1000" width="1000"></canvas>
+                <div class="colors-cont">
+                    <div class="black" onclick="setColor('black')"></div>
+                    <div class="red" onclick="setColor('#e74c3c')"></div>
+                    <div class="yellow" onclick="setColor('#f1c40f')"></div>
+                    <div class="green" onclick="setColor('#badc58')"></div>
+                    <div class="blue" onclick="setColor('#3498db')"></div>
+                    <div class="orange" onclick="setColor('#e67e22')"></div>
+                    <div class="purple" onclick="setColor('#9b59b6')"></div>
+                    <div class="pink" onclick="setColor('#fd79a8')"></div>
+                    <div class="brown" onclick="setColor('#834c32')"></div>
+                    <div class="grey" onclick="setColor('gray')"></div>
+                    <div class="eraser" onclick="setEraser()"><i class="fas fa-eraser"></i></div>
+                    <div class="clearboard" onclick="clearBoard()"><i class="fas fa-trash-alt"></i></div>
+                </div>
+            </div>
+            <!-- Overlay -->
+            <div id="overlay1"></div>
+
+            <div class="footer">
+                <div class="utils">
+
+                    <div class="audio">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="novideo">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="screenshare tooltip">
+                        <i class="fas fa-desktop"></i>
+                        <span class="tooltiptext">Share Screen</span>
+                    </div>
+                    <div class="board-icon tooltip">
+                        <i class="fas fa-chalkboard"></i>
+                        <span class="tooltiptext">Whiteboard</span>
+                    </div>
+                    <button class="board-icon tooltip" onclick="startSelection()">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span class="tooltiptext">Screenshot</span>
+                    </button>
+                    <div class="cutcall tooltip">
+                        <i class="fas fa-phone-slash"></i>
+                        <span class="tooltiptext">Leave Call</span>
+                    </div>
+
+
+                </div>
+                <div class="copycode-cont">
+                    <div class="roomcode"></div>
+                    <button class="copycode-button" onclick="CopyClassText()">Copy Code</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="right-cont">
+            <div class="head-title">
+
+                <div class="chats"><i class="fas fa-comment-alt mr-1"></i>Chats</div>
+                <div class="attendies"><i class="fas fa-users mr-1"></i>Attendies</div>
+
+
+            </div>
+
+            <div class="chat-cont">
+
+            </div>
+            <div class="chat-input-cont">
+                <div class="ci-cont" ><input type="text" id="emojisText" class="chat-input" placeholder="Type chat here.."></div>
+                <div class="ci-send"><button class="chat-send" id="msgSendBTn">Send</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js" integrity="sha512-hkvXFLlESjeYENO4CNi69z3A1puvONQV5Uh+G4TUDayZxSLyic5Kba9hhuiNLbHqdnKNMk2PxXKm0v7KDnWkYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kit.fontawesome.com/82eb4b47e3.js" crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/4.7.4/socket.io.min.js" integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4" crossorigin="anonymous"></script>
+    <script src="js/room.js"></script>
+    <script>
+         $('#emojisText').emojioneArea({
+        pickerPosition:'top'
+    })
+        let startX, startY;
+        const overlay1 = document.getElementById('overlay1');
+        const selectionBox = document.createElement('div');
+        selectionBox.id = 'selection-box';
+        overlay1.appendChild(selectionBox);
+
+        function startSelection(event) {
+            overlay1.style.display = 'block';
+            overlay1.addEventListener('mousedown', handleMouseDown);
+            overlay1.addEventListener('mousemove', handleMouseMove);
+            overlay1.addEventListener('mouseup', handleMouseUp);
+        }
+
+        function handleMouseDown(event) {
+            startX = event.clientX;
+            startY = event.clientY;
+            selectionBox.style.left = startX + 'px';
+            selectionBox.style.top = startY + 'px';
+            selectionBox.style.width = '0px';
+            selectionBox.style.height = '0px';
+            selectionBox.style.display = 'block';
+        }
+
+        function handleMouseMove(event) {
+            if (selectionBox.style.display === 'block') {
+                const currentX = event.clientX;
+                const currentY = event.clientY;
+                const width = currentX - startX;
+                const height = currentY - startY;
+                selectionBox.style.width = width + 'px';
+                selectionBox.style.height = height + 'px';
+            }
+        }
+
+        function handleMouseUp(event) {
+            overlay1.removeEventListener('mousedown', handleMouseDown);
+            overlay1.removeEventListener('mousemove', handleMouseMove);
+            overlay1.removeEventListener('mouseup', handleMouseUp);
+            captureScreenshot();
+        }
+
+        function captureScreenshot() {
+            const content = document.getElementById('sscontent');
+            html2canvas(content, {
+                x: startX,
+                y: startY,
+                width: parseInt(selectionBox.style.width),
+                height: parseInt(selectionBox.style.height),
+            }).then(canvas => {
+                const screenshotUrl = canvas.toDataURL('image/png');
+                downloadScreenshot(screenshotUrl);
+                overlay1.style.display = 'none';
+            });
+        }
+
+        function downloadScreenshot(url) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'screenshot.png';
+            link.click();
+        }
+
+    </script>
+</body>
+
+</html>

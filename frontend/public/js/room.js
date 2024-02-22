@@ -272,7 +272,6 @@ function reportError(e) {
 
 
 function startCall() {
-
     navigator.mediaDevices.getUserMedia(mediaConstraints)
         .then(localStream => {
             myvideo.srcObject = localStream;
@@ -742,6 +741,7 @@ socket.on('action', (msg, sid) => {
         videoInfo[sid] = 'on';
     }
 })
+
 
 whiteboardButt.addEventListener('click', () => {
     if (boardVisisble) {

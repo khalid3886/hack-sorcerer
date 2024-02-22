@@ -757,3 +757,54 @@ whiteboardButt.addEventListener('click', () => {
 cutCall.addEventListener('click', () => {
     location.href = '/';
 })
+
+
+// record video
+
+let mediaRecorder; // Add mediaRecorder variable to hold the MediaRecorder instance
+let recordedChunks = []; // Array to store recorded video chunks
+
+const recordButton = document.getElementById('recordButton');
+recordButton.addEventListener('click', toggleRecording); // Add event listener for record button
+
+async function toggleRecording() {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+        // Stop recording
+        mediaRecorder.stop();
+        recordButton.textContent = 'Record';
+    } else {
+        // Start recording
+        const videoElement = document.getElementById('vd1');
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoElement.srcObject = stream;
+        if (stream) {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.ondataavailable = handleDataAvailable;
+            recordedChunks = []; // Reset recorded chunks array
+            mediaRecorder.start();
+            recordButton.textContent = 'Stop Recording';
+        }
+    }
+}
+
+function handleDataAvailable(event) {
+    if (event.data.size > 0) {
+        recordedChunks.push(event.data);
+    }
+}
+
+// Function to download recorded video
+function downloadRecordedVideo() {
+    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    a.style = 'display: none';
+    a.href = url;
+    a.download = 'recorded_video.webm';
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
+
+//

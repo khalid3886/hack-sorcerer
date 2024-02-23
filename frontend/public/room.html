@@ -75,13 +75,35 @@
                         <span class="tooltiptext">Share Screen</span>
                     </div>
                     <!-- download video -->
-                    <button id="recordButton">Record</button> 
-        <button  id="downloadButton" onclick="downloadRecordedVideo()">Download Recorded Video</button>
+                    <div class="screenshare tooltip">
+                        <i class="fa-solid fa-record-vinyl"></i>
+                        <span class="tooltiptext" id="recordButton">Record Video</span>
+                    </div>
+                    
+                    <div class="screenshare tooltip">
+                        <i class="fa-solid fa-download"></i>
+                        <span class="tooltiptext" id="downloadButton" onclick="downloadRecordedVideo()">Download Video</span>
+                    </div>
+                    <!-- <button id="recordButton">Record</button>  -->
+        <!-- <button  id="downloadButton" onclick="downloadRecordedVideo()">Download Recorded Video</button> -->
 
         <!-- transcript button -->
-        <button id="start-transcript">add transcript</button>
-        <button id="stop-transcript">stop transcript</button>
-        <button id="reaction-btn">hi</button>
+        
+        <div class="screenshare tooltip">
+            <i class="fa-solid fa-closed-captioning"></i>
+            <span class="tooltiptext" id="start-transcript">Live Caption</span>
+        </div>
+        <!-- <button id="start-transcript">add transcript</button> -->
+        <div class="screenshare tooltip">
+            <i class="fa-solid fa-comment-slash"></i>
+            <span class="tooltiptext" id="stop-transcript">Stop Caption</span>
+        </div>
+        <!-- <button id="stop-transcript">stop transcript</button> -->
+        <div class="screenshare tooltip">
+            <button id="reaction-btn" style="border: none; height: 15px; width: px; background-color: #D8D8D8;">🖐️</button>
+            <span class="tooltiptext">Raise Hand</span>
+        </div>
+        
 
                     <div class="board-icon tooltip">
                         <i class="fas fa-chalkboard"></i>

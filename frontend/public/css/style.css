@@ -556,7 +556,7 @@ navbar .logo {
   margin: 0 auto;
   display: flex;
   margin-top: 50px;
-  width: 340px;
+  width: 600px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
@@ -674,7 +674,8 @@ navbar .logo {
   outline: none;
 }
 .container-room .right-cont {
-  width: 30%;
+  width: 20%;
+  border-radius: 5%;
   background-color: #ffffff;
   height: 100vh;
   /* Track */

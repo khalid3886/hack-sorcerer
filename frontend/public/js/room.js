@@ -807,4 +807,64 @@ function downloadRecordedVideo() {
 }
 
 
+<<<<<<< Updated upstream
+=======
+//
+
+
+// transcript add
+let recognition;
+let start_trans=document.getElementById('start-transcript')
+let stop_trans=document.getElementById('stop-transcript')
+start_trans.addEventListener('click',startTranscript)
+function startTranscript() {
+    console.log('btn clicked')
+    recognition = new window.webkitSpeechRecognition();
+    recognition.lang = 'en-US'; // Set the language for speech recognition
+    recognition.interimResults = true; // Get interim results to reduce delay
+    recognition.continuous = true;
+
+    recognition.onstart = () => {
+        console.log('Speech recognition started.');
+    };
+
+    recognition.onend = () => {
+        console.log('Speech recognition ended.');
+    };
+    recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = 0; i < event.results.length; ++i) {
+            for (let j = 0; j < event.results[i].length; ++j) {
+                transcript += event.results[i][j].transcript;
+            }
+        }
+        updateTranscript(transcript);
+    };
+
+    recognition.start();
+}
+stop_trans.addEventListener('click',stopTranscript)
+function stopTranscript() {
+    if (recognition) {
+        recognition.stop();
+    }
+}
+
+function updateTranscript(transcript) {
+    console.log('Transcript:', transcript);
+}
+
+
+
+
+//reaction
+
+document.getElementById('reaction-btn').addEventListener('click',()=>{
+    document.getElementById('reaction').style.display='block'
+    setTimeout(function() {
+        document.getElementById('reaction').style.display='none'
+    }, 5000);
+})
+
+>>>>>>> Stashed changes
 //

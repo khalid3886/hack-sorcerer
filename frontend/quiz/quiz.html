@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Quiz App</title>
+</head>
+<body>
+  <div id="quiz-container">
+    <h2>Quiz</h2>
+    <input type="text" id="usernameInput" placeholder="Enter your username">
+    <button onclick="joinQuiz()">Join Quiz</button>
+    <ul id="quizQuestions"></ul>
+    <button onclick="submitAnswer()">Submit Answer</button>
+    <ul id="quizMessages"></ul>
+    <h3>Participants and Scores</h3>
+    <ul id="participants"></ul>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+<script src="https://cdn.socket.io/4.7.4/socket.io.min.js" integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4" crossorigin="anonymous"></script>
+<script src="quiz.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

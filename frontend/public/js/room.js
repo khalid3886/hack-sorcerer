@@ -24,6 +24,7 @@ let boardVisisble = false;
 
 whiteboardCont.style.visibility = 'hidden';
 
+
 // Vitual 
 // const virtualBackgroundImage = new Image();
 // virtualBackgroundImage.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlOfvJXzOw4C0QN99qBnKtFcI4C3R3RxqML85fcihutA&s';
@@ -178,7 +179,6 @@ let myvideooff = document.querySelector("#myvideooff");
 myvideooff.style.visibility = 'hidden';
 
 const configuration = { iceServers: [{ urls: "stun:stun.stunprotocol.org" }] }
-
 const mediaConstraints = { video: true, audio: true };
 
 let connections = {};

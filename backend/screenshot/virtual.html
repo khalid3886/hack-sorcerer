@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Background</title>
+    <style>
+        #video-container {
+            position: relative;
+            width: 100%;
+        }
+        #background-selector {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+        #video {
+            width: 100%;
+            height: auto;
+        }
+        #canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <select id="background-selector">
+            <option value="none">None</option>
+            <option value="background1.jpg">Background 1</option>
+            <option value="background2.jpg">Background 2</option>
+        </select>
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const backgroundSelector = document.getElementById('background-selector');
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+                video.onloadedmetadata = () => {
+                    video.play();
+                };
+            })
+            .catch(error => {
+                console.error('Error accessing webcam:', error);
+            });
+
+        function applyVirtualBackground() {
+            const ctx = canvas.getContext('2d');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const background = backgroundSelector.value;
+            if (background !== 'none') {
+                const backgroundImage = new Image();
+                backgroundImage.onload = () => {
+                    ctx.globalAlpha = 0.5; // Adjust transparency as needed
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                };
+                backgroundImage.src = background;
+            }
+            
+            requestAnimationFrame(applyVirtualBackground);
+        }
+
+        video.onplay = () => {
+            applyVirtualBackground();
+        };
+    </script>
+</body>
+</html>

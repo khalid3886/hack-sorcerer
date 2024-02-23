@@ -1,9 +1,9 @@
-const socket = io();
+const socket=io("http://localhost:8080",{transports:["websocket"]})
 const myvideo = document.querySelector("#vd1");
 const roomid = params.get("room");
 let username;
 const chatRoom = document.querySelector('.chat-cont');
-const sendButton = document.querySelector('.chat-send');
+const sendButton = document.getElementById('msgSendBTn');
 const messageField = document.querySelector('.chat-input');
 const videoContainer = document.querySelector('#vcont');
 const overlayContainer = document.querySelector('#overlay')
@@ -23,6 +23,31 @@ const ctx = canvas.getContext('2d');
 let boardVisisble = false;
 
 whiteboardCont.style.visibility = 'hidden';
+
+// Vitual 
+// const virtualBackgroundImage = new Image();
+// virtualBackgroundImage.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlOfvJXzOw4C0QN99qBnKtFcI4C3R3RxqML85fcihutA&s';
+// virtualBackgroundImage.onload = () => {
+//     // Once the virtual background image is loaded, you can start applying it to the video stream
+//     applyVirtualBackground();
+// };
+
+// function applyVirtualBackground() {
+//     const canvas1 = document.createElement('canvas');
+//     const ctx = canvas1.getContext('2d');
+//     canvas1.width = myvideo.videoWidth;
+//     canvas1.height = myvideo.videoHeight;
+//     ctx.drawImage(myvideo, 0, 0, canvas1.width, canvas1.height);
+    
+//     // Draw the virtual background image over the canvas
+//     ctx.drawImage(virtualBackgroundImage, 0, 0, canvas1.width, canvas1.height);
+
+//     // Replace the video stream with the modified canvas
+//     myvideo.srcObject = canvas1.captureStream();
+
+//     // Continue the process in a loop for real-time effect
+//     requestAnimationFrame(applyVirtualBackground);
+// }
 
 let isDrawing = 0;
 let x = 0;
@@ -247,7 +272,6 @@ function reportError(e) {
 
 
 function startCall() {
-
     navigator.mediaDevices.getUserMedia(mediaConstraints)
         .then(localStream => {
             myvideo.srcObject = localStream;
@@ -578,7 +602,9 @@ socket.on('remove peer', sid => {
 
 sendButton.addEventListener('click', () => {
     const msg = messageField.value;
+    console.log("HELOO")
     messageField.value = '';
+    console.log("hi")
     socket.emit('message', msg, username, roomid);
 })
 
@@ -601,6 +627,13 @@ socket.on('message', (msg, sendername, time) => {
     </div>
 </div>`
 });
+
+// document.getElementById("msgSendBTn").addEventListener('click',()=>{
+//     const msg = document.getElementById("emojisText").value
+//     socket.emit('message',(msg,username,roomid))
+// })
+
+
 
 videoButt.addEventListener('click', () => {
 
@@ -709,6 +742,7 @@ socket.on('action', (msg, sid) => {
     }
 })
 
+
 whiteboardButt.addEventListener('click', () => {
     if (boardVisisble) {
         whiteboardCont.style.visibility = 'hidden';
@@ -723,3 +757,112 @@ whiteboardButt.addEventListener('click', () => {
 cutCall.addEventListener('click', () => {
     location.href = '/';
 })
+
+
+// record video
+
+let mediaRecorder; // Add mediaRecorder variable to hold the MediaRecorder instance
+let recordedChunks = []; // Array to store recorded video chunks
+
+const recordButton = document.getElementById('recordButton');
+recordButton.addEventListener('click', toggleRecording); // Add event listener for record button
+
+async function toggleRecording() {
+    if (mediaRecorder && mediaRecorder.state === 'recording') {
+        // Stop recording
+        mediaRecorder.stop();
+        recordButton.textContent = 'Record';
+    } else {
+        // Start recording
+        const videoElement = document.getElementById('vd1');
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        videoElement.srcObject = stream;
+        if (stream) {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.ondataavailable = handleDataAvailable;
+            recordedChunks = []; // Reset recorded chunks array
+            mediaRecorder.start();
+            recordButton.textContent = 'Stop Recording';
+        }
+    }
+}
+
+function handleDataAvailable(event) {
+    if (event.data.size > 0) {
+        recordedChunks.push(event.data);
+    }
+}
+
+// Function to download recorded video
+function downloadRecordedVideo() {
+    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    a.style = 'display: none';
+    a.href = url;
+    a.download = 'recorded_video.webm';
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
+
+
+
+//
+
+
+// transcript add
+let recognition;
+let start_trans=document.getElementById('start-transcript')
+let stop_trans=document.getElementById('stop-transcript')
+start_trans.addEventListener('click',startTranscript)
+function startTranscript() {
+    console.log('btn clicked')
+    recognition = new window.webkitSpeechRecognition();
+    recognition.lang = 'en-US'; // Set the language for speech recognition
+    recognition.interimResults = true; // Get interim results to reduce delay
+    recognition.continuous = true;
+
+    recognition.onstart = () => {
+        console.log('Speech recognition started.');
+    };
+
+    recognition.onend = () => {
+        console.log('Speech recognition ended.');
+    };
+    recognition.onresult = (event) => {
+        let transcript = '';
+        for (let i = 0; i < event.results.length; ++i) {
+            for (let j = 0; j < event.results[i].length; ++j) {
+                transcript += event.results[i][j].transcript;
+            }
+        }
+        updateTranscript(transcript);
+    };
+
+    recognition.start();
+}
+stop_trans.addEventListener('click',stopTranscript)
+function stopTranscript() {
+    if (recognition) {
+        recognition.stop();
+    }
+}
+
+function updateTranscript(transcript) {
+    console.log('Transcript:', transcript);
+}
+
+
+
+
+//reaction
+
+document.getElementById('reaction-btn').addEventListener('click',()=>{
+    document.getElementById('reaction').style.display='block'
+    setTimeout(function() {
+        document.getElementById('reaction').style.display='none'
+    }, 5000);
+})
+

@@ -807,8 +807,8 @@ function downloadRecordedVideo() {
 }
 
 
-<<<<<<< Updated upstream
-=======
+
+
 //
 
 
@@ -866,5 +866,3 @@ document.getElementById('reaction-btn').addEventListener('click',()=>{
     }, 5000);
 })
 
->>>>>>> Stashed changes
-//

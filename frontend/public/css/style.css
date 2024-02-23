@@ -338,6 +338,7 @@ navbar .logo {
 .container-room .left-cont .whiteboard-cont .colors-cont .black:hover {
   cursor: pointer;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .red {
   height: 30px;
   width: 30px;
@@ -345,9 +346,11 @@ navbar .logo {
   background-color: #e74c3c;
   margin-top: 10px;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .red:hover {
   cursor: pointer;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .yellow {
   height: 30px;
   width: 30px;

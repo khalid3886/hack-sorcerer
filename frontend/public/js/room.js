@@ -819,17 +819,21 @@ let stop_trans=document.getElementById('stop-transcript')
 start_trans.addEventListener('click',startTranscript)
 function startTranscript() {
     console.log('btn clicked')
-    recognition = new window.webkitSpeechRecognition();
-    recognition.lang = 'en-US'; // Set the language for speech recognition
-    recognition.interimResults = true; // Get interim results to reduce delay
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = true;
     recognition.continuous = true;
 
     recognition.onstart = () => {
+        setTimeout(()=>{
+            recognition.stop()
+        },3000)
         console.log('Speech recognition started.');
     };
 
     recognition.onend = () => {
         console.log('Speech recognition ended.');
+        recognition.start()
     };
     recognition.onresult = (event) => {
         let transcript = '';
@@ -852,6 +856,9 @@ function stopTranscript() {
 
 function updateTranscript(transcript) {
     console.log('Transcript:', transcript);
+    let sub=document.getElementById('subtitle')
+    sub.innerText=""
+    sub.innerText=transcript
 }
 
 
@@ -865,4 +872,3 @@ document.getElementById('reaction-btn').addEventListener('click',()=>{
         document.getElementById('reaction').style.display='none'
     }, 5000);
 })
-

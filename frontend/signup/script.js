@@ -111,9 +111,7 @@ document.getElementById('register_btn').addEventListener('click',()=>{
             'content-type':'application/json'
         },
         body:JSON.stringify({
-            name,
-            email,
-            pass
+            name, email,pass
         })
     })
     .then(res=>res.json())
@@ -126,8 +124,6 @@ document.getElementById('register_btn').addEventListener('click',()=>{
     })
     .catch(err=>console.log(err))
 })
-
-
 
 // SIGNUP
 document.getElementById('login-button').addEventListener('click',()=>{

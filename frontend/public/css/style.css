@@ -283,9 +283,7 @@ navbar .logo {
   bottom: 0;
   display: flex;
   background-color: #ecf0f1;
-  /* Track */
-  /* Handle */
-  /* Handle on hover */
+
 }
 .container-room ::-webkit-scrollbar {
   width: 10px;
@@ -891,3 +889,9 @@ navbar .logo {
   font-size: 24px;
   cursor: pointer;
 }
+
+
+
+
+
+

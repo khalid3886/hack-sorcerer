@@ -100,10 +100,34 @@
             <span class="tooltiptext" id="stop-transcript">Stop Caption</span>
         </div>
         <!-- <button id="stop-transcript">stop transcript</button> -->
+
         <div class="screenshare tooltip">
+            <div class="dropdown">
+                <button id="reaction-btn" class="dropbtn" style="border: none; height: 15px; width: px; background-color: #D8D8D8;">🖐️</button>
+                <div id="dropdownContent" class="dropdown-content">
+                    <div class="emoji-grid">
+                        <button class="emoji-btn" onclick="selectEmoji('👍')">👍</button>
+                        <button class="emoji-btn" onclick="selectEmoji('👏')">👏</button>
+                        <button class="emoji-btn" onclick="selectEmoji('😊')">😊</button>
+                        <button class="emoji-btn" onclick="selectEmoji('🖐️')">🖐️</button>
+                        <button class="emoji-btn" onclick="selectEmoji('🙌')">🙌</button>
+                        <button class="emoji-btn" onclick="selectEmoji('🎉')">🎉</button>
+                        <button class="emoji-btn" onclick="selectEmoji('👋')">👋</button>
+                        <button class="emoji-btn" onclick="selectEmoji('🥳')">🥳</button>
+                        <button class="emoji-btn" onclick="selectEmoji('😂')">😂</button>
+                        <button class="emoji-btn" onclick="selectEmoji('🥺')">🥺</button>
+                        <button class="emoji-btn" onclick="selectEmoji('😎')">😎</button>
+                        <button class="emoji-btn" onclick="selectEmoji('🤩')">🤩</button>
+                    </div>
+                </div>
+            </div>
+            <span></span>
+        </div>
+
+        <!-- <div class="screenshare tooltip">
             <button id="reaction-btn" style="border: none; height: 15px; width: px; background-color: #D8D8D8;">🖐️</button>
             <span class="tooltiptext">Raise Hand</span>
-        </div>
+        </div> -->
         
 
                     <div class="board-icon tooltip">

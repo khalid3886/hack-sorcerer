@@ -866,9 +866,25 @@ function updateTranscript(transcript) {
 
 //reaction
 
-document.getElementById('reaction-btn').addEventListener('click',()=>{
+// document.getElementById('reaction-btn').addEventListener('click',()=>{
+//     document.getElementById('reaction').style.display='block'
+//     setTimeout(function() {
+//         document.getElementById('reaction').style.display='none'
+//     }, 5000);
+// })
+function selectEmoji(emoji) {
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     document.getElementById('reaction').style.display='block'
+    document.getElementById('reaction').innerText = emoji;
     setTimeout(function() {
         document.getElementById('reaction').style.display='none'
     }, 5000);
-})
+}
+
+const dropdownButton = document.getElementById('reaction-btn');
+    const dropdownContent = document.getElementById('dropdownContent');
+
+    // Show or hide the dropdown content when the button is clicked
+    dropdownButton.addEventListener('click', function() {
+        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    });

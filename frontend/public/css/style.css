@@ -850,3 +850,44 @@ navbar .logo {
   transform: translateX(-50%);
   color: white;
 }
+
+.dropbtn {
+  background-color: #D8D8D8;
+  border: none;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  bottom: 100%;
+}
+
+/* Style the dropdown button on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the emoji grid */
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+/* Style the emoji buttons */
+.emoji-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}

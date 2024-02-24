@@ -338,6 +338,7 @@ navbar .logo {
 .container-room .left-cont .whiteboard-cont .colors-cont .black:hover {
   cursor: pointer;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .red {
   height: 30px;
   width: 30px;
@@ -345,9 +346,11 @@ navbar .logo {
   background-color: #e74c3c;
   margin-top: 10px;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .red:hover {
   cursor: pointer;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .yellow {
   height: 30px;
   width: 30px;
@@ -358,6 +361,7 @@ navbar .logo {
 .container-room .left-cont .whiteboard-cont .colors-cont .yellow:hover {
   cursor: pointer;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .green {
   height: 30px;
   width: 30px;
@@ -365,9 +369,11 @@ navbar .logo {
   background-color: #badc58;
   margin-top: 10px;
 }
+
 .container-room .left-cont .whiteboard-cont .colors-cont .green:hover {
   cursor: pointer;
 }
+/* container css */
 .container-room .left-cont .whiteboard-cont .colors-cont .orange {
   height: 30px;
   width: 30px;
@@ -550,7 +556,7 @@ navbar .logo {
   margin: 0 auto;
   display: flex;
   margin-top: 50px;
-  width: 340px;
+  width: 600px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
@@ -668,7 +674,8 @@ navbar .logo {
   outline: none;
 }
 .container-room .right-cont {
-  width: 30%;
+  width: 20%;
+  border-radius: 5%;
   background-color: #ffffff;
   height: 100vh;
   /* Track */
@@ -833,4 +840,54 @@ navbar .logo {
   top: 10px;
   right: 10px;
   display: none;
+}
+
+
+#subtitle{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+
+.dropbtn {
+  background-color: #D8D8D8;
+  border: none;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  bottom: 100%;
+}
+
+/* Style the dropdown button on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the emoji grid */
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+}
+
+/* Style the emoji buttons */
+.emoji-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }

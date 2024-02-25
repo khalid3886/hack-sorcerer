@@ -246,3 +246,67 @@
     <script src="./dashboard/dashboard.js"></script>
 </body>
 </html>
+
+<!-- const express = require("express");
+const nodemailer = require('nodemailer');
+
+const app = express();
+app.use(express.json());
+
+// Create a Nodemailer transporter
+let transporter = nodemailer.createTransport({
+    service: 'Gmail', // Use the correct SMTP service provider
+    auth: {
+        user: 'utkarshagnihotri7@gmail.com', // Update with your email
+        pass: 'gxlv tskz oyir nslc' // Update with your password
+    }
+});
+
+// Route for sending email
+app.post("/send-email", (req, res) => {
+    const { email, subject, message } = req.body;
+
+    // Email content
+    let mailOptions = {
+        from: 'utkarshagnihotri7@gmail.com', // Update with your email
+        to: email,
+        subject: subject,
+        text: message
+    };
+
+    // Send email
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Error sending email');
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send('Email sent successfully');
+        }
+    });
+});
+
+// Your existing code for adding tasks to the calendar
+function addTask() {
+    let task = $('#task').val();
+    let start = $('#taskForm').data('start');
+    let end = $('#taskForm').data('end');
+
+    if (task) {
+        $('#calendar').fullCalendar('renderEvent', {
+            title: task,
+            start: start,
+            end: end
+        }, true);
+
+        // Send email notification
+        sendEmail(task, start, end);
+    }
+
+    closeTaskForm();
+}
+
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
+ -->

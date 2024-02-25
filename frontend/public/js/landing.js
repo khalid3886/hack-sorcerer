@@ -68,13 +68,12 @@ cam.addEventListener('click', () => {
             .then(localstream => {
                 videoCont.srcObject = localstream;
             })
-
         cam.classList = "nodevice";
         const image = localStorage.getItem("userImage")
         document.getElementById("videoOFF").style.backgroundImage = "url(" + image + ")";
         document.getElementById("videoOFF").style.backgroundSize = "cover";
         document.getElementById("videoOFF").style.backgroundPosition = "center"; 
-        document.getElementById("videoOFF").style.backgroundRepeat = "no-repeat"; // Prevent the background image from repeating
+        document.getElementById("videoOFF").style.backgroundRepeat = "no-repeat"; 
         cam.innerHTML = `<i class="fas fa-video-slash"></i>`;
         camAllowed = 0;
     }

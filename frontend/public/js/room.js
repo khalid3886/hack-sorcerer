@@ -1,5 +1,5 @@
 const socket=io("http://localhost:8080",{transports:["websocket"]})
-const myvideo = document.querySelector("#vd1");
+const myvideo = document.getElementById("vd1");
 const roomid = params.get("room");
 let username;
 const chatRoom = document.querySelector('.chat-cont');
@@ -14,6 +14,7 @@ const audioButt = document.querySelector('.audio');
 const cutCall = document.querySelector('.cutcall');
 const screenShareButt = document.querySelector('.screenshare');
 const whiteboardButt = document.querySelector('.board-icon')
+const videoBox = document.getElementById('videoBox');
 
 //whiteboard js start
 const whiteboardCont = document.querySelector('.whiteboard-cont');
@@ -175,7 +176,12 @@ let mymuteicon = document.querySelector("#mymuteicon");
 mymuteicon.style.visibility = 'hidden';
 
 let myvideooff = document.querySelector("#myvideooff");
-myvideooff.style.visibility = 'hidden';
+//  const image = localStorage.getItem("userImage")
+//         myvideo.style.backgroundImage = "url(" + image + ")";
+//         myvideo.style.backgroundSize = "cover";
+//         myvideo.style.backgroundPosition = "center";
+//         myvideo.style.backgroundRepeat = "no-repeat";
+
 
 const configuration = { iceServers: [{ urls: "stun:stun.stunprotocol.org" }] }
 
@@ -628,10 +634,16 @@ socket.on('message', (msg, sendername, time) => {
 </div>`
 });
 
+socket.on("participantsInc", (count)=>{
+    document.getElementById("part-count").innerText = count;
+    
+})
+
 // document.getElementById("msgSendBTn").addEventListener('click',()=>{
 //     const msg = document.getElementById("emojisText").value
 //     socket.emit('message',(msg,username,roomid))
 // })
+
 
 
 
@@ -646,7 +658,8 @@ videoButt.addEventListener('click', () => {
         videoAllowed = 0;
        
         videoButt.style.backgroundColor = "#b12c2c";
-
+        myvideo.style.backgroundRepeat = "no-repeat";
+ 
         if (mystream) {
             mystream.getTracks().forEach(track => {
                 if (track.kind === 'video') {
@@ -654,8 +667,19 @@ videoButt.addEventListener('click', () => {
                 }
             })
         }
-
         myvideooff.style.visibility = 'visible';
+          const image = localStorage.getItem("userImage")
+         myvideooff.style.backgroundImage = "url(" + image + ")";
+         myvideooff.style.backgroundSize = "cover";
+        myvideooff.style.backgroundPosition = "center";
+        myvideooff.style.repeat = "no-repeat";
+        myvideooff.style.height="170px"
+        myvideooff.style.width="170px"
+        
+
+
+
+       
 
         socket.emit('action', 'videooff');
     }
@@ -675,6 +699,10 @@ videoButt.addEventListener('click', () => {
 
 
         myvideooff.style.visibility = 'hidden';
+        //  const image = localStorage.getItem("userImage")
+        //  myvideooff.style.backgroundImage = "url(" + image + ")";
+        //  myvideooff.style.backgroundSize = "cover";
+        // myvideooff.style.backgroundPosition = "center";
 
         socket.emit('action', 'videoon');
     }
@@ -892,3 +920,44 @@ const dropdownButton = document.getElementById('reaction-btn');
     dropdownButton.addEventListener('click', function() {
         dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     });
+
+
+    const participantModal = document.getElementById('participantModal');
+const closeBtn = document.querySelector('.close-btn');
+
+// Function to close the modal
+function closeModal() {
+    participantModal.style.display = 'none';
+}
+
+// Open the modal when the participant count icon is clicked
+participantCountIcon.addEventListener('click', () => {
+    participantModal.style.display = 'block';
+});
+
+// Close the modal when the close button is clicked
+closeBtn.addEventListener('click', closeModal);
+
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === participantModal) {
+        closeModal();
+    }
+});
+let usersListName = document.getElementById("participantList");
+socket.on("newUserNameJoined", (participantsname)=>{
+    const userImageinPart = localStorage.getItem("userImage")
+    const div = document.createElement("div");
+    div.classList.add("photoDIV")
+    const img = document.createElement("img");
+    img.classList.add("participantsImage");
+    img.src = userImageinPart;
+   const list =  document.createElement("p");
+   const breakLine = document.createElement("br");
+   list.innerHTML = participantsname;
+   div.append(img)
+   div.append(list)
+   usersListName.append(div);
+   usersListName.append(breakLine);
+
+})

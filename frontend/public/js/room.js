@@ -1,4 +1,4 @@
-const socket=io("http://localhost:8080",{transports:["websocket"]})
+const socket=io("https://hack-sorcerer.onrender.com/",{transports:["websocket"]})
 const myvideo = document.getElementById("vd1");
 const roomid = params.get("room");
 let username;

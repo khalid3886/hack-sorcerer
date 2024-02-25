@@ -208,7 +208,7 @@ server.listen(process.env.PORT||8080,async()=>{
       console.log('server is running')
       try{
         await connection
-        console.log('connected to db')
+        console.log('connected to db');
     }
     catch(err)
     {

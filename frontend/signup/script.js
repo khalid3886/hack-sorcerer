@@ -149,7 +149,7 @@ document.getElementById('login-button').addEventListener('click',()=>{
             localStorage.setItem('token',data.access_token);
             localStorage.setItem('name',data.user.name);
             
-            location.href='../frontend/public/index.html'
+            location.href= '../frontend/public/landing.html'
             
         }
     })

@@ -230,9 +230,10 @@ function CopyClassText() {
 continueButt.addEventListener('click', () => {
     if (nameField.value == '') return;
     username = nameField.value;
+    const userImageinPart=localStorage.getItem("userImage")
     overlayContainer.style.visibility = 'hidden';
     document.querySelector("#myname").innerHTML = `${username} (You)`;
-    socket.emit("join room", roomid, username);
+    socket.emit("join room", roomid, username,userImageinPart);
 
 })
 
@@ -962,9 +963,9 @@ socket.on("newUserNameJoined", (participantsname)=>{
 
 })
 
-
-socket.on("update-avtar",(userImage)=>{
-    img.src=userImage;
+const userImageinPart = localStorage.getItem("userImage")
+socket.on("update-avtar",(userImageinPart)=>{
+    img.src=userImageinPart;
 })
 //avtar
 // socket.emit('update avatar', localStorage.getItem("userImage"));

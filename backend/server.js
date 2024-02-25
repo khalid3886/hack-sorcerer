@@ -105,6 +105,7 @@ app.use(express.static(path.join(__dirname, '../frontend/signup')));
 let rooms = {};
 let socketroom = {};
 let socketname = {};
+let socketImage={};
 let micSocket = {};
 let videoSocket = {};
 let roomBoard = {};
@@ -118,7 +119,21 @@ io.on('connect', socket => {
         io.emit("participantsInc", countParticipants);
         socketroom[socket.id] = roomid;
         socketname[socket.id] = username;
-        io.emit("newUserNameJoined", username)
+        socketImage[socket.id]= userImage;
+        io.emit("newUserNameJoined", username);
+        
+        //avtar
+        // socket.on('update avatar', (data) => {
+        //     socket.avatar = data.avatar;
+        //     io.emit('chat message', {
+        //         avatar: socket.avatar,
+        //     });
+        // });
+        io.emit("update-avtar",userImage);
+
+
+
+
         micSocket[socket.id] = 'on';
         videoSocket[socket.id] = 'on';
 

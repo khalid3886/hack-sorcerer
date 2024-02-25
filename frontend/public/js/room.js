@@ -950,7 +950,7 @@ socket.on("newUserNameJoined", (participantsname)=>{
     const div = document.createElement("div");
     div.classList.add("photoDIV")
     const img = document.createElement("img");
-    img.classList.add("participantsImage");
+    img.classList.add("participantsImage" );
     img.src = userImageinPart;
    const list =  document.createElement("p");
    const breakLine = document.createElement("br");
@@ -961,6 +961,14 @@ socket.on("newUserNameJoined", (participantsname)=>{
    usersListName.append(breakLine);
 
 })
+
+
+socket.on("update-avtar",(userImage)=>{
+    img.src=userImage;
+})
+//avtar
+// socket.emit('update avatar', localStorage.getItem("userImage"));
+
 
 // function toggleMenu() {
 //     var menu = document.getElementById('menuItems');

@@ -208,11 +208,11 @@ if(localStorage.getItem('userImage')) {
     //     }
     //   };
       // Example button click event
-    document.querySelector('.logoutBTN').addEventListener("click", ()=>{
-        localStorage.removeItem('token');
-        localStorage.removeItem('email');
-        location.href = "./../signup/index.html";
-        // frontend\signup\index.html frontend\signup\index.html
-    }
-    );
+    // document.querySelector('.logoutBTN').addEventListener("click", ()=>{
+    //     localStorage.removeItem('token');
+    //     localStorage.removeItem('email');
+    //     location.href = "./../signup/index.html";
+       
+    // }
+    // );
     

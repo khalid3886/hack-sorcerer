@@ -100,7 +100,7 @@ signupLink.onclick = () => {
 //   }
 // }
 // CONNECTION
-let url='http://localhost:8080'
+let url='https://hack-sorcerer.onrender.com'
 document.getElementById('register_btn').addEventListener('click',()=>{
     const name=document.getElementById('sign-up-username').value
     const email=document.getElementById('sign-up-email').value

@@ -109,14 +109,17 @@ let socketname = {};
 let micSocket = {};
 let videoSocket = {};
 let roomBoard = {};
-
+let countParticipants = 0;
 io.on('connect', socket => {
 
     socket.on("join room", (roomid, username) => {
 
         socket.join(roomid);
+        countParticipants++;
+        io.emit("participantsInc", countParticipants);
         socketroom[socket.id] = roomid;
         socketname[socket.id] = username;
+        io.emit("newUserNameJoined", username)
         micSocket[socket.id] = 'on';
         videoSocket[socket.id] = 'on';
 
@@ -125,6 +128,7 @@ io.on('connect', socket => {
             socket.to(roomid).emit('message', `${username} joined the room.`, 'Bot', moment().format(
                 "h:mm a"
             ));
+            
             io.to(socket.id).emit('join room', rooms[roomid].filter(pid => pid != socket.id), socketname, micSocket, videoSocket);
         }
         else {
@@ -187,9 +191,12 @@ io.on('connect', socket => {
 
     socket.on('disconnect', () => {
         if (!socketroom[socket.id]) return;
+        countParticipants--;
+        io.emit("participantsInc", countParticipants);
         socket.to(socketroom[socket.id]).emit('message', `${socketname[socket.id]} left the chat.`, `Bot`, moment().format(
             "h:mm a"
         ));
+        
         socket.to(socketroom[socket.id]).emit('remove peer', socket.id);
         var index = rooms[socketroom[socket.id]].indexOf(socket.id);
         rooms[socketroom[socket.id]].splice(index, 1);

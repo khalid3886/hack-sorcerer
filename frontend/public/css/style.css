@@ -237,8 +237,8 @@ input[type="file"] {
   border: none;
   border-radius: 10px;
   background-color: white;
-  border: 2px solid #4ecca3;
-  color: #4ecca3;
+  border: 2px solid #38b000;
+  color: #38b000;
 }
 .main .create-join .createroom-clicked:focus {
   outline: none;
@@ -404,7 +404,7 @@ input[type="file"] {
   font-weight: bold;
   padding: 10px;
   width: 90%;
-  border-bottom: 3px solid #4ecca3;
+  border-bottom: 3px solid ;
   color: #393e46;
   height: 40px;
 }
@@ -417,7 +417,7 @@ input[type="file"] {
   margin-top: 30px;
   color: #ffffff;
   font-weight: bold;
-  background-color: #4ecca3;
+  background-color: #38b000;
   padding: 12px 20px;
   border-radius: 10px;
   transition: opacity 0.5s;
@@ -466,11 +466,13 @@ input[type="file"] {
 }
 .container-room .left-cont {
   width: 80%;
-  background-color: #393e46;
+  background-color: rgba(0, 0, 0, 0.893);
+  /* background: linear-gradient(to bottom,#38b000,#00509d); */
   height: 100vh;
   padding: 50px;
   text-align: center;
   position: relative;
+  /* #38b000,#00509d */
 }
 .container-room .left-cont .whiteboard-cont {
   height: 85vh;
@@ -728,7 +730,7 @@ input[type="file"] {
   justify-content: center;
 }
 .container-room .left-cont .footer .utils .audio {
-  background-color: #4ecca3;
+  background-color: #38b000;
   text-align: center;
   color: white;
   padding: 10px;
@@ -742,7 +744,7 @@ input[type="file"] {
   background-color: #393e46;
 }
 .container-room .left-cont .footer .utils .novideo {
-  background-color: #4ecca3;
+  background-color:  #38b000;
   text-align: center;
   margin-left: 10px;
   color: white;
@@ -813,10 +815,10 @@ input[type="file"] {
   display: flex;
 }
 .container-room .left-cont .footer .copycode-cont .roomcode {
-  color: #4ecca3;
+  color:  #38b000;
   padding: 10px 20px;
   background-color: white;
-  border-bottom: 3px solid #4ecca3;
+  border-bottom: 3px solid  #38b000;
   font-weight: bold;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -827,7 +829,7 @@ input[type="file"] {
   height: 40px;
   text-align: center;
   color: white;
-  background-color: #4ecca3;
+  background-color:  #38b000;
   border: none;
   font-weight: 500;
   margin-top: 20px;
@@ -904,7 +906,7 @@ input[type="file"] {
 }
 .container-room .right-cont .chat-cont .message .info .username {
   font-weight: bold;
-  color: #4ecca3;
+  color:  #38b000;
 }
 .container-room .right-cont .chat-cont .message .info .time {
   margin-left: 12px;
@@ -929,11 +931,11 @@ input[type="file"] {
 }
 .container-room .right-cont .chat-input-cont .chat-input {
   width: 100%;
-  height: 36px;
+  height: 40px;
   font-size: 0.85rem;
   padding: 4px 10px;
   border: none;
-  border-bottom: 3px solid #4ecca3;
+  border-bottom: 3px solid  #2980b9;
   color: #393e46;
 }
 .container-room .right-cont .chat-input-cont .chat-input:focus {
@@ -944,9 +946,9 @@ input[type="file"] {
   padding: 5px 20px;
   border: none;
   background-color: white;
-  color: #4ecca3;
-  font-weight: bold;
-  font-size: 0.85rem;
+  color:  #2980b9;
+  font-weight: 900;
+  font-size: 0.95rem;
   border-radius: 2px;
   transition: background-color 0.5s;
 }
@@ -1140,7 +1142,8 @@ margin-right: 55px;
 /* Particpant list */
 /* Style the participant count badge */
 .participant-count {
-  background-color: #ff5733;
+  background-color: #00509d;
+
   color: white;
   border-radius: 50%;
   padding: 4px 8px;

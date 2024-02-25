@@ -1,5 +1,5 @@
-const loginForm = document.querySelector("form.login");
-const signupForm = document.querySelector("form.signup");
+const loginForm = document.getElementById("newLogin");
+const signupForm = document.getElementById("newSignup");
 const loginBtn = document.querySelector("label.login");
 const signupBtn = document.querySelector("label.signup");
 const signupLink = document.querySelector(".signup-link a");
@@ -140,11 +140,15 @@ document.getElementById('login-button').addEventListener('click',()=>{
     })
     .then(res=>res.json())
     .then(data=>{
+        console.log("HELLO")
         console.log(data)
         if(data.msg==='login successfull')
         {
-            localStorage.setItem('token',data.access_token)
-            localStorage.setItem('name',data.user.name)
+            console.log(data.user.email);
+            localStorage.setItem("email", data.user.email);
+            localStorage.setItem('token',data.access_token);
+            localStorage.setItem('name',data.user.name);
+            
             window.location.href='../public/index.html'
             
         }

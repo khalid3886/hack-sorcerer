@@ -151,3 +151,68 @@ if(localStorage.getItem('userImage')) {
     userImage.src = localStorage.getItem('userImage');
 }
 
+// Logged out
+// document.querySelector('.logoutBTN').addEventListener('click', async () => {
+    // document.querySelector('.logoutBTN').addEventListener('click', () => {
+    //     const email = localStorage.getItem('email'); 
+    //     fetch(`http://localhost:8080/logout/${email}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //         if(data.msg === 'logout successfull'){
+            
+    //             localStorage.removeItem('token');
+    //             localStorage.removeItem('email');
+    //             window.location.href = './signup/index.html';
+    //         }
+    //         //     .then(res=>res.json())
+    //         //     .then(data=>{
+    //         //         if(data.msg==='user has been registered')
+    //         //         {
+    //         //             // localStorage.setItem('name',data.name)
+    //         //             invalidspan.innerHTML=`${data.msg}`;
+    //         //             invalidspan.style.color = "green"
+    //         //         }
+    //         //     })
+    //         //     .catch(err=>console.log(err))
+    //         // })
+    //             // Handle the error response
+    //     })
+    //     .catch(error => {
+    //         console.error('Logout error:', error);
+    //         // Handle the error (display an error message, etc.)
+    //     });
+    // });
+
+    // const logout = async () => {
+    //     const email = localStorage.getItem('email'); 
+    //     try {
+    //       const response = await fetch(`http://localhost:8080/logout/${email}`, {
+    //         method: "GET",
+    //       });
+      
+    //       if (response.ok) {
+            
+    //         console.log("Logout successful");
+    //         window.location.href = './signup/index.html';
+    //       } else {
+    //         const data = await response.json();
+    //         console.error("Logout failed:", data.err);
+    //       }
+    //     }catch(error) {
+    //       console.error("Error during logout:", error);
+    //     }
+    //   };
+      // Example button click event
+    document.querySelector('.logoutBTN').addEventListener("click", ()=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        location.href = "./../signup/index.html";
+        // frontend\signup\index.html frontend\signup\index.html
+    }
+    );
+    

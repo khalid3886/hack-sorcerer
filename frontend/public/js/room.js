@@ -641,8 +641,10 @@ videoButt.addEventListener('click', () => {
         for (let key in videoTrackSent) {
             videoTrackSent[key].enabled = false;
         }
+
         videoButt.innerHTML = `<i class="fas fa-video-slash"></i>`;
         videoAllowed = 0;
+       
         videoButt.style.backgroundColor = "#b12c2c";
 
         if (mystream) {
@@ -771,7 +773,7 @@ async function toggleRecording() {
     if (mediaRecorder && mediaRecorder.state === 'recording') {
         // Stop recording
         mediaRecorder.stop();
-        recordButton.textContent = 'Record';
+        recordButton.style.backgroundColor = "#d8d8d8";
     } else {
         // Start recording
         const videoElement = document.getElementById('vd1');
@@ -782,7 +784,7 @@ async function toggleRecording() {
             mediaRecorder.ondataavailable = handleDataAvailable;
             recordedChunks = []; // Reset recorded chunks array
             mediaRecorder.start();
-            recordButton.textContent = 'Stop Recording';
+            recordButton.style.backgroundColor = "red";
         }
     }
 }
@@ -827,7 +829,7 @@ function startTranscript() {
     recognition.onstart = () => {
         setTimeout(()=>{
             recognition.stop()
-        },3000)
+        },7000)
         console.log('Speech recognition started.');
     };
 
@@ -876,9 +878,11 @@ function selectEmoji(emoji) {
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     document.getElementById('reaction').style.display='block'
     document.getElementById('reaction').innerText = emoji;
+    var reactionDiv = document.getElementById('reaction');
+    reactionDiv.innerHTML = '<span style="font-size: 40px;">' + emoji + '</span>';
     setTimeout(function() {
         document.getElementById('reaction').style.display='none'
-    }, 5000);
+    }, 10000);
 }
 
 const dropdownButton = document.getElementById('reaction-btn');

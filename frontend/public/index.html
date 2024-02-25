@@ -12,9 +12,27 @@
 </head>
 
 <body>
-    <navbar>
-        <div class="logo">GatherHub</div>
+    <navbar class="newnavbar">
+
+
+        <div class="logo"><span class="gather">Gather</span>Hub</div>
+        <div id="overlaypanu"></div>
+        <div id="profileContainer">
+           
+            <img id="userImage" class="userImage" src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg" alt="">
+            <form id="imageForm" style="display: none;">
+                <h3 class="updateHead">Update your image</h3>
+                <input type="file" id="imageInput"> <br> <br>
+                <button class="updateBtnProfile" onclick="changeImage()">Done</button>
+            </form>
+           
+        </div>
+        <!-- <div class="calenderICON tooltip">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span class="tooltiptext">Calender</span>
+        </div> -->
     </navbar>
+    
     <!-- <div class="landing"> -->
         <!-- <div class="head-cont unselectable">
             Welcome to QuickMeet!
@@ -22,15 +40,15 @@
 
         <div class="main">
             <div class="create-join">
-                <div class="text"><div class="head">Create Video Meetings in one-click.</div>
-                <div class="subtext">No sign ups required. Open Source platform.</div>
+                <div class="text"><div class="head">Transforming Virtual Meetings with our <span class="ourgh">GatherHub</span></div>
+                <div class="subtext">Simplify Your Meetings ✨ Unlock the Magic</div>
                 </div>
                 <button id="createroom" class="createroom-butt unselectable">Create Room</button><br>
                 <input type="text" name="room" spellcheck="false" placeholder="Enter Room Code" id="roomcode" class="roomcode"><br>
-                <div class="joinroom unselectable" id="joinroom">Join Room</div>
+                <div class="joinroom unselectable" id="joinroom"><button class="joinUS">Join Room</button></div>
             </div>
             <div class="video-cont">
-                <video class="video-self" autoplay muted playsinline></video>
+                <video class="video-self" id="videoOFF" autoplay muted playsinline></video>
                 <div class="settings">
                     <div class="device" id="mic"><i class="fas fa-microphone"></i></div>
                     <div class="device" id="webcam"><i class="fas fa-video"></i></div>

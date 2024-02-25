@@ -112,7 +112,7 @@ let roomBoard = {};
 let countParticipants = 0;
 io.on('connect', socket => {
 
-    socket.on("join room", (roomid, username) => {
+    socket.on("join room", (roomid, username,userImage) => {
 
         socket.join(roomid);
         countParticipants++;

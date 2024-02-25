@@ -1,4 +1,3 @@
-
 const cors=require('cors')
 // const app = express()
 // const {connection}=require('./db')

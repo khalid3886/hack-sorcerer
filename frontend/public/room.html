@@ -35,7 +35,7 @@
                     </video>
                     <div class="nametag" id="myname">yourname</div>
                     <div class="mute-icon" id="mymuteicon"><i class="fas fa-microphone-slash"></i></div>
-                    <div id="reaction">🖐️</div>
+                    <div id="reaction"><span style="transform: scale(2);">🖐️</span></div>
                     <div id="subtitle"></div>
                     <div class="video-off" id="myvideooff">
                         
@@ -76,34 +76,44 @@
                         <span class="tooltiptext">Share Screen</span>
                     </div>
                     <!-- download video -->
-                    <div class="screenshare tooltip">
-                        <i class="fa-solid fa-record-vinyl"></i>
-                        <span class="tooltiptext" id="recordButton">Record Video</span>
-                    </div>
+                    <!-- <div class="screenshare tooltip">
+                        <i class="fa-solid fa-record-vinyl"> <span class="rec" id="recordButton" style="opacity: 0;">Record Video</span></i>
+                       
+                    </div> -->
+                    <button id="recordButton" style="border-radius: 50%; margin-left: 10px;
+                    height: 40px; width: 40px; background-color: #d8d8d8; border: none;">
+                     <i class="fa-solid fa-record-vinyl"></i>
+                    </button>
                     
                     <div class="screenshare tooltip">
-                        <i class="fa-solid fa-download"></i>
-                        <span class="tooltiptext" id="downloadButton" onclick="downloadRecordedVideo()">Download Video</span>
+                        <i class="fa-solid fa-download">
+                            <span class="recDow" id="downloadButton" onclick="downloadRecordedVideo()" style="opacity: 0;">Download Video</span>
+                        </i>
+                       
                     </div>
-                    <!-- <button id="recordButton">Record</button>  -->
-        <!-- <button  id="downloadButton" onclick="downloadRecordedVideo()">Download Recorded Video</button> -->
+                    <!-- <button id="recordButton">Record</button> 
+        <button  id="downloadButton" onclick="downloadRecordedVideo()">Download Recorded Video</button> -->
 
         <!-- transcript button -->
         
         <div class="screenshare tooltip">
-            <i class="fa-solid fa-closed-captioning"></i>
-            <span class="tooltiptext" id="start-transcript">Live Caption</span>
+            <i class="fa-solid fa-closed-captioning">
+                <span class="liveCap" id="start-transcript" style="opacity: 0;">Live</span>
+            </i>
+            
         </div>
         <!-- <button id="start-transcript">add transcript</button> -->
         <div class="screenshare tooltip">
-            <i class="fa-solid fa-comment-slash"></i>
-            <span class="tooltiptext" id="stop-transcript">Stop Caption</span>
+            <i class="fa-solid fa-comment-slash">
+                <span class="liveCap" id="stop-transcript"></span>
+            </i>
+            
         </div>
         <!-- <button id="stop-transcript">stop transcript</button> -->
 
-        <div class="screenshare tooltip">
+        <div class="#">
             <div class="dropdown">
-                <button id="reaction-btn" class="dropbtn" style="border: none; height: 15px; width: px; background-color: #D8D8D8;">🖐️</button>
+                <button id="reaction-btn" class="dropbtn"><i class="fa-regular fa-face-smile"></i></button>
                 <div id="dropdownContent" class="dropdown-content">
                     <div class="emoji-grid">
                         <button class="emoji-btn" onclick="selectEmoji('👍')">👍</button>
@@ -134,7 +144,7 @@
                         <i class="fas fa-chalkboard"></i>
                         <span class="tooltiptext">Whiteboard</span>
                     </div>
-                    <button class="board-icon tooltip" onclick="startSelection()">
+                    <button class="board-icon tooltip" onclick="startSelection()" style="border: none;">
                         <i class="fa-solid fa-square-plus"></i>
                         <span class="tooltiptext">Screenshot</span>
                     </button>
@@ -146,7 +156,7 @@
 
                 </div>
                 <div class="copycode-cont">
-                    <div class="roomcode"></div>
+                    <div class="roomcode anotherRoom"></div>
                     <button class="copycode-button" onclick="CopyClassText()">Copy Code</button>
                 </div>
             </div>
@@ -158,7 +168,7 @@
             <div class="head-title">
 
                 <div class="chats"><i class="fas fa-comment-alt mr-1"></i>Chats</div>
-                <div class="attendies"><i class="fas fa-users mr-1"></i>Attendies</div>
+                <!-- <div class="attendies"><i class="fas fa-users mr-1"></i>Attendies</div> -->
 
 
             </div>

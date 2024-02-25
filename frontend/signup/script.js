@@ -105,7 +105,7 @@ document.getElementById('register_btn').addEventListener('click',()=>{
     const name=document.getElementById('sign-up-username').value
     const email=document.getElementById('sign-up-email').value
     const pass=document.getElementById('sign-up-password').value
-    fetch(`http://localhost:8080/users/signup`,{
+    fetch(`${url}/users/signup`,{
         method:"POST",
         headers:{
             'content-type':'application/json'
@@ -118,6 +118,7 @@ document.getElementById('register_btn').addEventListener('click',()=>{
     .then(data=>{
         if(data.msg==='user has been registered')
         {
+            // localStorage.setItem('name',data.name)
             invalidspan.innerHTML=`${data.msg}`;
             invalidspan.style.color = "green"
         }
@@ -139,9 +140,11 @@ document.getElementById('login-button').addEventListener('click',()=>{
     })
     .then(res=>res.json())
     .then(data=>{
+        console.log(data)
         if(data.msg==='login successfull')
         {
             localStorage.setItem('token',data.access_token)
+            localStorage.setItem('name',data.user.name)
             window.location.href='../public/index.html'
             
         }

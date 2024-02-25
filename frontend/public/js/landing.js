@@ -60,7 +60,7 @@ codeCont.addEventListener('change', (e) => {
         return;
     }
 })
-
+// 
 cam.addEventListener('click', () => {
     if (camAllowed) {
         mediaConstraints = { video: false, audio: micAllowed ? true : false };
@@ -68,8 +68,12 @@ cam.addEventListener('click', () => {
             .then(localstream => {
                 videoCont.srcObject = localstream;
             })
-
         cam.classList = "nodevice";
+        const image = localStorage.getItem("userImage")
+        document.getElementById("videoOFF").style.backgroundImage = "url(" + image + ")";
+        document.getElementById("videoOFF").style.backgroundSize = "cover";
+        document.getElementById("videoOFF").style.backgroundPosition = "center"; 
+        document.getElementById("videoOFF").style.backgroundRepeat = "no-repeat"; 
         cam.innerHTML = `<i class="fas fa-video-slash"></i>`;
         camAllowed = 0;
     }
@@ -110,3 +114,40 @@ mic.addEventListener('click', () => {
         micAllowed = 1;
     }
 })
+
+
+
+// Function to handle image change
+var userImage = document.getElementById('userImage');
+var imageForm = document.getElementById('imageForm');
+var overlaypanu = document.getElementById('overlaypanu');
+
+// Function to show the form and overlay
+userImage.onclick = function() {
+    imageForm.style.display = 'block';
+    overlaypanu.style.display = 'block';
+};
+
+// Function to handle image change
+function changeImage() {
+    var input = document.getElementById('imageInput');
+    var file = input.files[0];
+    if (file) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // Set image source and save to localStorage
+            userImage.src = e.target.result;
+            localStorage.setItem('userImage', e.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+    // Hide the form and overlay after image change
+    imageForm.style.display = 'none';
+    overlaypanu.style.display = 'none';
+}
+
+// Check if image is in localStorage and set it
+if(localStorage.getItem('userImage')) {
+    userImage.src = localStorage.getItem('userImage');
+}
+

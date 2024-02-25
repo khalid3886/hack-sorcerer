@@ -1,5 +1,5 @@
 const socket=io("http://localhost:8080",{transports:["websocket"]})
-const myvideo = document.querySelector("#vd1");
+const myvideo = document.getElementById("vd1");
 const roomid = params.get("room");
 let username;
 const chatRoom = document.querySelector('.chat-cont');
@@ -14,6 +14,7 @@ const audioButt = document.querySelector('.audio');
 const cutCall = document.querySelector('.cutcall');
 const screenShareButt = document.querySelector('.screenshare');
 const whiteboardButt = document.querySelector('.board-icon')
+const videoBox = document.getElementById('videoBox');
 
 //whiteboard js start
 const whiteboardCont = document.querySelector('.whiteboard-cont');
@@ -175,7 +176,12 @@ let mymuteicon = document.querySelector("#mymuteicon");
 mymuteicon.style.visibility = 'hidden';
 
 let myvideooff = document.querySelector("#myvideooff");
-myvideooff.style.visibility = 'hidden';
+//  const image = localStorage.getItem("userImage")
+//         myvideo.style.backgroundImage = "url(" + image + ")";
+//         myvideo.style.backgroundSize = "cover";
+//         myvideo.style.backgroundPosition = "center";
+//         myvideo.style.backgroundRepeat = "no-repeat";
+
 
 const configuration = { iceServers: [{ urls: "stun:stun.stunprotocol.org" }] }
 
@@ -628,10 +634,16 @@ socket.on('message', (msg, sendername, time) => {
 </div>`
 });
 
+socket.on("participantsInc", (count)=>{
+    document.getElementById("part-count").innerText = count;
+    
+})
+
 // document.getElementById("msgSendBTn").addEventListener('click',()=>{
 //     const msg = document.getElementById("emojisText").value
 //     socket.emit('message',(msg,username,roomid))
 // })
+
 
 
 
@@ -641,10 +653,13 @@ videoButt.addEventListener('click', () => {
         for (let key in videoTrackSent) {
             videoTrackSent[key].enabled = false;
         }
+
         videoButt.innerHTML = `<i class="fas fa-video-slash"></i>`;
         videoAllowed = 0;
+       
         videoButt.style.backgroundColor = "#b12c2c";
-
+        myvideo.style.backgroundRepeat = "no-repeat";
+ 
         if (mystream) {
             mystream.getTracks().forEach(track => {
                 if (track.kind === 'video') {
@@ -652,8 +667,19 @@ videoButt.addEventListener('click', () => {
                 }
             })
         }
-
         myvideooff.style.visibility = 'visible';
+          const image = localStorage.getItem("userImage")
+         myvideooff.style.backgroundImage = "url(" + image + ")";
+         myvideooff.style.backgroundSize = "cover";
+        myvideooff.style.backgroundPosition = "center";
+        myvideooff.style.repeat = "no-repeat";
+        myvideooff.style.height="170px"
+        myvideooff.style.width="170px"
+        
+
+
+
+       
 
         socket.emit('action', 'videooff');
     }
@@ -673,6 +699,10 @@ videoButt.addEventListener('click', () => {
 
 
         myvideooff.style.visibility = 'hidden';
+        //  const image = localStorage.getItem("userImage")
+        //  myvideooff.style.backgroundImage = "url(" + image + ")";
+        //  myvideooff.style.backgroundSize = "cover";
+        // myvideooff.style.backgroundPosition = "center";
 
         socket.emit('action', 'videoon');
     }
@@ -771,7 +801,7 @@ async function toggleRecording() {
     if (mediaRecorder && mediaRecorder.state === 'recording') {
         // Stop recording
         mediaRecorder.stop();
-        recordButton.textContent = 'Record';
+        recordButton.style.backgroundColor = "#d8d8d8";
     } else {
         // Start recording
         const videoElement = document.getElementById('vd1');
@@ -782,7 +812,7 @@ async function toggleRecording() {
             mediaRecorder.ondataavailable = handleDataAvailable;
             recordedChunks = []; // Reset recorded chunks array
             mediaRecorder.start();
-            recordButton.textContent = 'Stop Recording';
+            recordButton.style.backgroundColor = "red";
         }
     }
 }
@@ -819,17 +849,21 @@ let stop_trans=document.getElementById('stop-transcript')
 start_trans.addEventListener('click',startTranscript)
 function startTranscript() {
     console.log('btn clicked')
-    recognition = new window.webkitSpeechRecognition();
-    recognition.lang = 'en-US'; // Set the language for speech recognition
-    recognition.interimResults = true; // Get interim results to reduce delay
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = true;
     recognition.continuous = true;
 
     recognition.onstart = () => {
+        setTimeout(()=>{
+            recognition.stop()
+        },7000)
         console.log('Speech recognition started.');
     };
 
     recognition.onend = () => {
         console.log('Speech recognition ended.');
+        recognition.start()
     };
     recognition.onresult = (event) => {
         let transcript = '';
@@ -852,6 +886,9 @@ function stopTranscript() {
 
 function updateTranscript(transcript) {
     console.log('Transcript:', transcript);
+    let sub=document.getElementById('subtitle')
+    sub.innerText=""
+    sub.innerText=transcript
 }
 
 
@@ -859,10 +896,68 @@ function updateTranscript(transcript) {
 
 //reaction
 
-document.getElementById('reaction-btn').addEventListener('click',()=>{
+// document.getElementById('reaction-btn').addEventListener('click',()=>{
+//     document.getElementById('reaction').style.display='block'
+//     setTimeout(function() {
+//         document.getElementById('reaction').style.display='none'
+//     }, 5000);
+// })
+function selectEmoji(emoji) {
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
     document.getElementById('reaction').style.display='block'
+    document.getElementById('reaction').innerText = emoji;
+    var reactionDiv = document.getElementById('reaction');
+    reactionDiv.innerHTML = '<span style="font-size: 40px;">' + emoji + '</span>';
     setTimeout(function() {
         document.getElementById('reaction').style.display='none'
-    }, 5000);
-})
+    }, 10000);
+}
 
+const dropdownButton = document.getElementById('reaction-btn');
+    const dropdownContent = document.getElementById('dropdownContent');
+
+    // Show or hide the dropdown content when the button is clicked
+    dropdownButton.addEventListener('click', function() {
+        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    });
+
+
+    const participantModal = document.getElementById('participantModal');
+const closeBtn = document.querySelector('.close-btn');
+
+// Function to close the modal
+function closeModal() {
+    participantModal.style.display = 'none';
+}
+
+// Open the modal when the participant count icon is clicked
+participantCountIcon.addEventListener('click', () => {
+    participantModal.style.display = 'block';
+});
+
+// Close the modal when the close button is clicked
+closeBtn.addEventListener('click', closeModal);
+
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === participantModal) {
+        closeModal();
+    }
+});
+let usersListName = document.getElementById("participantList");
+socket.on("newUserNameJoined", (participantsname)=>{
+    const userImageinPart = localStorage.getItem("userImage")
+    const div = document.createElement("div");
+    div.classList.add("photoDIV")
+    const img = document.createElement("img");
+    img.classList.add("participantsImage");
+    img.src = userImageinPart;
+   const list =  document.createElement("p");
+   const breakLine = document.createElement("br");
+   list.innerHTML = participantsname;
+   div.append(img)
+   div.append(list)
+   usersListName.append(div);
+   usersListName.append(breakLine);
+
+})

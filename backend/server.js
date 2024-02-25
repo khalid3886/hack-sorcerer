@@ -82,7 +82,7 @@ const path = require('path');
 const express = require('express')
 const http = require('http')
 const moment = require('moment');
-
+const {calenderRouter} = require("./route/calender.route")
 const {connection}=require('./db')
 const {userRouter}=require("./route/user.route")
 const socketio = require('socket.io');
@@ -92,8 +92,13 @@ const app = express();
 app.use(express.json())
 
 app.use(cors())
+app.use('/calender', calenderRouter)
 app.use('/users',userRouter)
 const server = http.createServer(app);
+// $$$$$$$$$$$$$$$$$$444
+
+
+// $$$$$$$$$$$$$$$$$4
 
 const io = socketio(server);
 

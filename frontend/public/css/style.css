@@ -80,8 +80,8 @@ navbar .logo {
   border-radius: 50%;
   height: 50px;
   width: 50px;
-  margin-top: 17%;
-  margin-right: 200px;
+  /* margin-top: 17%; */
+  /* margin-right: 200px; */
 }
 /* $$$$$$$$$$$$$$4 */
 #overlaypanu {
@@ -177,10 +177,10 @@ input[type="file"] {
   color: #393e46;
 }
 .main .create-join .text .subtext {
-  font-size: 26px;
-  font-weight: 500;
+  font-size: 23px;
+  font-weight: 700;
   color: #00509d;
-  font-family: "Pacifico", cursive;
+  /* font-family: "Pacifico", cursive; */
   margin-top: 10px;
 }
 .main .create-join .createroom-butt {
@@ -1176,8 +1176,34 @@ margin-right: 55px;
   cursor: pointer;
 }
 
+.logoutBTN{
+  padding: 15px 30px;
+  text-align: center;
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  /* height: 10px;
+  width: 50px; */
+  /* margin-top: 21%; */
+  /* margin-right: 50%; */
+}
+.logoutBTN:hover{
+  cursor: pointer;
+  /* border: 1px solid grey; */
+}
+#profileContainer{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+margin-right: 13%;
+/* gap: 25px; */
+margin-top: 3%;
+}
+.hamburger-menu {
+  display: none;
+}
 
-
-
-
-
+@media (max-width: 1100) {
+  .visible-sm {
+      display: none;
+  }
+}

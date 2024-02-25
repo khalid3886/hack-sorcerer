@@ -785,9 +785,9 @@ whiteboardButt.addEventListener('click', () => {
 })
 
 cutCall.addEventListener('click', () => {
-    location.href = '/';
+    location.href = '../public/index.html';
 })
-
+// frontend\public\index.html
 
 // record video
 
@@ -961,3 +961,35 @@ socket.on("newUserNameJoined", (participantsname)=>{
    usersListName.append(breakLine);
 
 })
+
+// function toggleMenu() {
+//     var menu = document.getElementById('menuItems');
+//     menu.classList.toggle('hidden');
+// }
+
+// Function to add new items to the menu
+// function addMenuItem(iconClass, tooltipText) {
+//     var menu = document.getElementById('menuItems');
+//     var newItem = document.createElement('div');
+//     newItem.classList.add('screenshare', 'tooltip');
+//     newItem.innerHTML = '<i class="' + iconClass + '"></i><span class="tooltiptext">' + tooltipText + '</span>';
+//     menu.appendChild(newItem);
+// }
+
+// Add items to the menu
+// Add your desired items here
+// addMenuItem('fas fa-chalkboard', 'Whiteboard');
+// addMenuItem('fas fa-users mr-1', 'Participants');
+
+// You can add more items as needed
+
+// Hide hamburger menu on larger screens
+// window.addEventListener('resize', function() {
+//     var menu = document.getElementById('menuItems');
+//     var hamburger = document.querySelector('.hamburger-menu');
+//     if (window.innerWidth >= 1100) {
+//         menu.classList.add('hidden');
+//     } else {
+//         menu.classList.remove('hidden');
+//     }
+// });

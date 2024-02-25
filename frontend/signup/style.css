@@ -85,15 +85,24 @@ html,body{
     width: 100%;
     display: grid;
     place-items: center;
-    background-color: rgb(232, 234, 236);
+    background-color: #ECEDFF;
 }
+.mainGif{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 
+}
+.videoGIF{
+    height: 100%;
+    width: 100%;
+}
 .wrapper{
     max-width: 390px;
     background-color: var(--bg-white);
     padding: 30px;
     overflow: hidden;
-    box-shadow: 0 15px 20px rgba(0,0,0,0.1);
+    box-shadow: 5px 15px 20px rgba(0,0,0,0.8);
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -192,7 +201,7 @@ input[type="radio"]{
     display: flex;
     width: 200%;
 }
-.form-container .form-inner form{
+.form-container .form-inner .formtodiv{
     width: 50%;
     transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
     -webkit-transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
@@ -201,13 +210,13 @@ input[type="radio"]{
     -o-transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 
-.form-inner form .field{
+.form-inner .formtodiv .field{
     height: 50px;
     width: 100%;
     margin-top: 20px;
 }
 
-.form-inner form .field input{
+.form-inner .formtodiv .field input{
     height: 100%;
     width: 100%;
     outline: none;
@@ -222,28 +231,28 @@ input[type="radio"]{
     -ms-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
 }
-.form-inner form .field input:focus{
+.form-inner .formtodiv .field input:focus{
     border-color: #38b000;
 }
-.form-inner form .pass-link{
+.form-inner .formtodiv .pass-link{
     margin-top: 5px;
 }
 
-.form-inner form .pass-link a,
-.form-inner form .signup-link a{
+.form-inner .formtodiv .pass-link a,
+.form-inner .formtodiv.signup-link a{
     color: #38b000;
     text-decoration: none;
 }
-.form-inner form .signup-link{
+.form-inner .formtodiv .signup-link{
     text-align: center;
     margin-top: 30px;
 }
-.form-inner form .pass-link a:hover,
-.form-inner form .signup-link a:hover{
+.form-inner .formtodiv .pass-link a:hover,
+.form-inner .formtodiv .signup-link a:hover{
     text-decoration: underline;
 }
 
-form .field input[type="submit"]{
+.formtodiv .field input[type="submit"]{
     color: var(--text-white);
     font-size: 20px;
     font-weight: 500;
@@ -266,4 +275,10 @@ form .field input[type="submit"]{
     cursor: pointer;
     border-radius: 5px;
     background: -webkit-linear-gradient(left, #38b000,#00509d);
+}
+
+@media (max-width: 1050px) {
+    .mainGif {
+        flex-direction: column;
+    }
 }

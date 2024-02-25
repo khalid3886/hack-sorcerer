@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar App</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
 </head>
 <style>
     body {
@@ -137,7 +137,7 @@
         <button onclick="addTask()" id="sendmailtoUser">Add Task</button>
     </div>
 
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
     <script>
         // Your JavaScript code for handling user interactions and sending emails
         $(document).ready(function () {
@@ -243,27 +243,20 @@
         }
     </script>
     <script src="https://kit.fontawesome.com/82eb4b47e3.js" crossorigin="anonymous"></script>
-    <script src="./dashboard/dashboard.js"></script>
+    <!-- <script src="./dashboard/dashboard.js"></script> -->
     <script>
        document.getElementById("sendmailtoUser").addEventListener("click", () => {
-        // Get the task details
-        let task = $('#task').val();
-        let name = $('#name').val();
         let email = $('#email').val();
         let start = $('#taskForm').data('start');
-        let end = $('#taskForm').data('end');
-
-        // Check if all required fields are filled
-        if (task && name && email) {
-            // Make a fetch request to send the email
-            fetch("http://localhost:8080/calender/send-mail", {
+        
+            fetch("https://hack-sorcerer.onrender.com/calender/send-mail", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     email: email,
-                    date: start.format() // Assuming you want to send the start date of the task
+                    date: start.format() 
                 })
             })
             .then(response => {
@@ -276,9 +269,9 @@
             .catch(error => {
                 console.error("Error sending email:", error);
             });
-        } else {
-            console.error("Please fill in all the required fields");
-        }
+        // } else {
+        //     console.error("Please fill in all the required fields");
+        // }
     });
     </script>
 </body>

@@ -38,6 +38,7 @@ Backend:
 - Socket.io
 - WebSockets
 - Nodemailer
+- WebRTC
 
 DataBase:
 - MongoDB
@@ -57,27 +58,26 @@ DataBase:
 In case of Backend Applications provide a list of your API endpoints, methods, brief descriptions, and examples of request/response.
 GET /api/items - retrieve all items
 POST /api/items - create a new item
+POST /users/register - register the user
+POST /users/login - login a user
+GET /users/logout - logout the users
+POST /calender/send-mail - to send the booked calender mail
 
 ## Website Preview
 Here are some preview images of the website pages:
 
-**Home**
-![gather-hub vercel app_index html]()
-
-**About**
-![gather-hub vercel app_aboutus html]()
-
-**Contact**
-![gather-hub vercel app_ContactUs_ContactUS_dist_index html]()
 
 **Sign In**
-![gather-hub vercel app_signup_signup html]()
+<img src="images/userRegisterScreenShot.png">
 
-**Sign Up**
-![gather-hub vercel app_signup_signup html (1)]()
 
 **Dashboard**
-![gather-hub vercel app_dashboard_dashboard html]()
+<img src="images/userRegisterScreenShot.png">
+
+
+**Main Room**
+<img src="images/userRegisterScreenShot.png">
+
 
 
 

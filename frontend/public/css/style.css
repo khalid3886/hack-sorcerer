@@ -1190,6 +1190,17 @@ margin-right: 55px;
   cursor: pointer;
   /* border: 1px solid grey; */
 }
+.calenderIcon{
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 8%;
+  margin-top: 5%;
+}
+.calenderICON:hover{
+  cursor: pointer;
+}
 #profileContainer{
 display: flex;
 flex-direction: row;

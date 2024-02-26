@@ -208,11 +208,14 @@ if(localStorage.getItem('userImage')) {
     //     }
     //   };
       // Example button click event
-    // document.querySelector('.logoutBTN').addEventListener("click", ()=>{
-    //     localStorage.removeItem('token');
-    //     localStorage.removeItem('email');
-    //     location.href = "./../signup/index.html";
+    document.querySelector('.logoutBTN').addEventListener("click", ()=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        location.href = "../index.html";
        
-    // }
-    // );
+    }
+    );
     
+    document.querySelector(".calenderIcon").addEventListener("click",()=>{
+        location.href = "./../calender/calender.html";
+    })

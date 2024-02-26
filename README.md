@@ -23,8 +23,8 @@ The project was developed collaboratively by the following team members:
 - **Kumari Anjali** - fw28_149
 
 ## Deployed App
-- Frontend: https://deployed-site.whatever
-- Backend: https://deployed-site.whatever
+- Frontend: https://gatherhub.netlify.app/
+- Backend: https://hack-sorcerer.onrender.com/
  
 ## Technology Stack
 Frontend:

@@ -786,7 +786,7 @@ whiteboardButt.addEventListener('click', () => {
 })
 
 cutCall.addEventListener('click', () => {
-    location.href = '../index.html';
+    location.href = '../public/landing.html';
 })
 // frontend\public\index.html
 

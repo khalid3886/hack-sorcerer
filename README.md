@@ -68,18 +68,15 @@ Here are some preview images of the website pages:
 
 
 **Sign In**
-<img src="images/userRegisterScreenShot.png">
+<img src="frontend/assets/Screenshot (287).png">
 
 
 **Dashboard**
-<img src="images/userRegisterScreenShot.png">
+<img src="frontend/assets/Screenshot (280).png">
 
 
 **Main Room**
-<img src="images/userRegisterScreenShot.png">
-
-
-
+<img src="frontend/assets/Screenshot (285).png">
 
 
 

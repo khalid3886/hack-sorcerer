@@ -63,6 +63,16 @@ POST /users/login - login a user
 GET /users/logout - logout the users
 POST /calender/send-mail - to send the booked calender mail
 
+## Installation & Getting started
+Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
+
+```bash
+npm init -y or yarn init -y
+cd backend 
+npm install or yarn install
+npm run server  or yarn run server
+```
+
 ## Website Preview
 Here are some preview images of the website pages:
 

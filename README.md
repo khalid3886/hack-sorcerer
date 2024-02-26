@@ -58,15 +58,6 @@ In case of Backend Applications provide a list of your API endpoints, methods, b
 GET /api/items - retrieve all items
 POST /api/items - create a new item
 
-## Installation & Getting started
-Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
-
-```bash
-npm install my-project
-cd my-project
-npm start
-```
-
 ## Website Preview
 Here are some preview images of the website pages:
 

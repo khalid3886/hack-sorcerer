@@ -71,7 +71,7 @@ npm start
 Here are some preview images of the website pages:
 
 **Home**
-![gather-hub vercel app_index html](https://github.com/OraonShivam21/coding-champion-2109/assets/138677528/c8d2a33e-5fa3-4efd-be32-8763eec3395c)
+![gather-hub vercel app_index html]()
 
 **About**
 ![gather-hub vercel app_aboutus html]()

@@ -1,4 +1,4 @@
-const socket=io("https://hack-sorcerer.onrender.com/",{transports:["websocket"]})
+const socket=io("http://localhost:8080/",{transports:["websocket"]})
 const myvideo = document.getElementById("vd1");
 const roomid = params.get("room");
 let username;
@@ -609,10 +609,18 @@ socket.on('remove peer', sid => {
 
 sendButton.addEventListener('click', () => {
     const msg = messageField.value;
-    console.log("HELOO")
+    const file = sendButton.dataset.file; 
+    console.log(file);
+    if (file) {
+        
+        readFileAndSend(file);
+        fileInput.value = '';
+        // Remove the stored file data from the send button
+        delete sendButton.dataset.file;
+    } else {
     messageField.value = '';
-    console.log("hi")
     socket.emit('message', msg, username, roomid);
+    }
 })
 
 messageField.addEventListener("keyup", function (event) {
@@ -620,6 +628,20 @@ messageField.addEventListener("keyup", function (event) {
         event.preventDefault();
         sendButton.click();
     }
+});
+
+socket.on('file upload', (fileData, sendername, time) => {
+    chatRoom.scrollTop = chatRoom.scrollHeight;
+    chatRoom.innerHTML += `<div class="message">
+    <div class="info">
+        <div class="username">${sendername}</div>
+        <div class="time">${time}</div>
+    </div>
+    <div class="content">
+    <div class="time">${time}</div>
+        ${console.log("fileData")}
+    </div>
+</div>`
 });
 
 socket.on('message', (msg, sendername, time) => {
@@ -634,6 +656,39 @@ socket.on('message', (msg, sendername, time) => {
     </div>
 </div>`
 });
+
+// SEND ATTACHEMENT
+const attachmentIcon = document.getElementById('attachmentIcon');
+    const fileInput = document.getElementById('fileInput');
+    attachmentIcon.addEventListener('click', function() {
+        fileInput.click();
+    });
+
+    // Event listener for file input change
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0]; 
+        if (file) {
+            readFileAndSend(file); 
+        }
+    });
+
+    function readFileAndSend(file) {
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const fileData = event.target.result; 
+            // Emit the file data over Socket.IO
+            socket.on('file upload', {
+                fileName: file.name,
+                fileType: file.type,
+                fileData: fileData
+            });
+        };
+
+        // Read the file as data URL
+        reader.readAsDataURL(file);
+    }
+// ATTACHEMNET
 
 socket.on("participantsInc", (count)=>{
     document.getElementById("part-count").innerText = count;
@@ -847,11 +902,15 @@ function downloadRecordedVideo() {
 let recognition;
 let start_trans=document.getElementById('start-transcript')
 let stop_trans=document.getElementById('stop-transcript')
+let languageSelector = document.getElementById('language-selector');
+
 start_trans.addEventListener('click',startTranscript)
 function startTranscript() {
+    let dropdownContent = document.getElementById('language-dropdown');
+    dropdownContent.style.display = dropdownContent.style.display ==='none';
     console.log('btn clicked')
     recognition = new webkitSpeechRecognition();
-    recognition.lang = 'en-US';
+    recognition.lang = languageSelector.value;
     recognition.interimResults = true;
     recognition.continuous = true;
 
@@ -895,6 +954,7 @@ function updateTranscript(transcript) {
 
 
 
+
 //reaction
 
 // document.getElementById('reaction-btn').addEventListener('click',()=>{
@@ -923,7 +983,7 @@ const dropdownButton = document.getElementById('reaction-btn');
     });
 
 
-    const participantModal = document.getElementById('participantModal');
+const participantModal = document.getElementById('participantModal');
 const closeBtn = document.querySelector('.close-btn');
 
 // Function to close the modal

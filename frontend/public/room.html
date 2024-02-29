@@ -107,11 +107,23 @@
         <!-- transcript button -->
         
         <div class="screenshare tooltip">
-            <i class="fa-solid fa-closed-captioning">
-                <span class="liveCap" id="start-transcript" style="opacity: 0;">Live</span>
+            <i class="fa-solid fa-closed-captioning" id="startTranscriptIcon">
+                <span class="liveCap" style="opacity: 0;">Live</span>
             </i>
-            
-        </div>
+            <div class="dropdown-content" id="language-dropdown">
+                <select id="language-selector">
+                    <option value="en-US">English</option>
+                    <option value="hi-IN">Hindi</option>
+                    <option value="fr-FR">French</option>
+                    <option value="es-ES">Spanish</option>
+                    <option value="zh-CN">Chinese</option>
+                </select>
+                <button id="start-transcript">Start Transcript</button>
+                <!-- <button id="stop-transcript">Stop Transcript</button> -->
+            </div>
+      </div>
+
+        
         <!-- <button id="start-transcript">add transcript</button> -->
         <div class="screenshare tooltip">
             <i class="fa-solid fa-comment-slash">
@@ -208,7 +220,12 @@
 
             </div>
             <div class="chat-input-cont">
-                <div class="ci-cont" ><input type="text" id="emojisText" class="chat-input" placeholder="Type chat here.."></div>
+                <div class="ci-cont" ><input type="text" id="emojisText" class="chat-input" placeholder="Type chat here..">
+                    <!-- <i class="fa-solid fa-paperclip"></i> -->
+                </div>
+                <div style="margin-top: 5px; margin-left: 2px; cursor: pointer;"><i class="fa-solid fa-paperclip" id="attachmentIcon"></i>
+                    <input type="file" id="fileInput" style="display: none;">
+                </div>
                 <div class="ci-send"><button class="chat-send" id="msgSendBTn">Send</button></div>
             </div>
         </div>
@@ -224,6 +241,7 @@
          $('#emojisText').emojioneArea({
         pickerPosition:'top'
     })
+    // document.getElementById("attachementIcon").innerHTML = `<i class="fa-solid fa-paperclip"></i>`;
         let startX, startY;
         const overlay1 = document.getElementById('overlay1');
         const selectionBox = document.createElement('div');

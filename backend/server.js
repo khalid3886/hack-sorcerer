@@ -185,12 +185,21 @@ io.on('connect', socket => {
     })
 
     socket.on('message', (msg, username, roomid) => {
-        console.log("hey")
+        // console.log("hey")
         io.to(roomid).emit('message', msg, username, moment().format(
             "h:mm a"
         ));
+
     })
 
+    // Attachemnet
+    socket.on('file upload', function(fileData, username,roomid) {
+        io.to(roomid).emit('file upload', fileData, username, moment().format(
+            "h:mm a"
+        ));
+        // socket.broadcast.emit("file upload", fileData);
+    });
+    // attachemnet
     socket.on('getCanvas', () => {
         if (roomBoard[socketroom[socket.id]])
             socket.emit('getCanvas', roomBoard[socketroom[socket.id]]);

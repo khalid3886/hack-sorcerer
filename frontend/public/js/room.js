@@ -1,4 +1,4 @@
-const socket=io("http://localhost:8080/",{transports:["websocket"]})
+const socket=io("https://hack-sorcerer.onrender.com/",{transports:["websocket"]})
 const myvideo = document.getElementById("vd1");
 const roomid = params.get("room");
 let username;
@@ -609,12 +609,13 @@ socket.on('remove peer', sid => {
 
 sendButton.addEventListener('click', () => {
     const msg = messageField.value;
-    const file = sendButton.dataset.file; 
+    const file = fileInput.files[0]; 
     console.log(file);
     if (file) {
         
         readFileAndSend(file);
         fileInput.value = '';
+        
         // Remove the stored file data from the send button
         delete sendButton.dataset.file;
     } else {
@@ -631,15 +632,17 @@ messageField.addEventListener("keyup", function (event) {
 });
 
 socket.on('file upload', (fileData, sendername, time) => {
+    console.log("HEllo")
     chatRoom.scrollTop = chatRoom.scrollHeight;
+    // chatRoom.innerHTML += `abbsvvs`
+
     chatRoom.innerHTML += `<div class="message">
     <div class="info">
         <div class="username">${sendername}</div>
         <div class="time">${time}</div>
     </div>
     <div class="content">
-    <div class="time">${time}</div>
-        ${console.log("fileData")}
+        <a href="${fileData.fileData}" target="_blank" download>${fileData.fileName}</a>
     </div>
 </div>`
 });
@@ -671,18 +674,20 @@ const attachmentIcon = document.getElementById('attachmentIcon');
             readFileAndSend(file); 
         }
     });
-
+  
     function readFileAndSend(file) {
         const reader = new FileReader();
-
+      
         reader.onload = function(event) {
             const fileData = event.target.result; 
-            // Emit the file data over Socket.IO
-            socket.on('file upload', {
+            console.log(fileData);
+            let fileObj =  {
                 fileName: file.name,
                 fileType: file.type,
                 fileData: fileData
-            });
+            }
+            // Emit the file data over Socket.IO
+            socket.emit('file upload', fileObj, username);
         };
 
         // Read the file as data URL
@@ -910,7 +915,7 @@ function startTranscript() {
     dropdownContent.style.display = dropdownContent.style.display ==='none';
     console.log('btn clicked')
     recognition = new webkitSpeechRecognition();
-    recognition.lang = languageSelector.value;
+    recognition.lang = languageSelector.value;  
     recognition.interimResults = true;
     recognition.continuous = true;
 

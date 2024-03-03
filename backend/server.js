@@ -185,6 +185,7 @@ io.on('connect', socket => {
     })
 
     socket.on('message', (msg, username, roomid) => {
+        // console.log(msg);
         // console.log("hey")
         io.to(roomid).emit('message', msg, username, moment().format(
             "h:mm a"
@@ -194,7 +195,9 @@ io.on('connect', socket => {
 
     // Attachemnet
     socket.on('file upload', function(fileData, username,roomid) {
-        io.to(roomid).emit('file upload', fileData, username, moment().format(
+        console.log(fileData);
+        console.log(username)
+        io.emit('file upload', fileData, username, moment().format(
             "h:mm a"
         ));
         // socket.broadcast.emit("file upload", fileData);

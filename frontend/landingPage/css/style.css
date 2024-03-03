@@ -1,5 +1,5 @@
 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 html {
     width: 100%;
     overflow-x: hidden;
@@ -10,6 +10,7 @@ body {
     -webkit-font-smoothing: antialiased;
     width: 100%;
     color:#9da6ac;
+    font-family: 'Poppins', sans-serif;;
 }
 /*==========================================
 PRE LOADER 
@@ -64,10 +65,10 @@ ul{
 h1,h2,h3,h4,h5,h6 { color:#585b60;}
 
 h1 {
-    font-size: 3.5rem;
-    line-height: 50px;
+    font-size: 4.6rem;
+    line-height: 40px;
     font-weight: 600;
-    font-family: "Myriad Pro" , sans-serif;
+    /* font-family: "Myriad Pro" , sans-serif; */
 }
 
 h2 {
@@ -226,13 +227,14 @@ p.description {
 
 
 .main-menu .navbar-nav > li > a {
-    padding: 30px 13px 25px 13px;
-    font-size: 17px;
+    padding: 30px 13px 25px 16px;
+    font-size: 23px;
     line-height: 22px;
-    color: #080808;
-    font-weight: 600;
+    margin-left: 20px;
+    color: #fff;
+    font-weight: 500;
     border-bottom: 3px solid transparent;
-	text-transform:uppercase;
+	/* text-transform:uppercase; */
 } 
  
 .main-menu.tiny .navbar-nav > li.active > a {
@@ -243,9 +245,11 @@ p.description {
     color: #2D88FC;
 }
 .main-menu .navbar-nav > li > a:hover {
-    color: #fff; 
+    color: #00031F; 
 }
-
+/* .navbar-nav li:hover{
+    color: #00031F;
+} */
 .main-menu .navbar-nav > .active > a, .main-menu .navbar-nav > .active > a:hover, .main-menu .navbar-nav > .active > a:focus {
     /* background-color: transparent; */
     color: #2D88FC;
@@ -271,7 +275,8 @@ p.description {
 
 #bgimage {
 	/* background-image: url(https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8193.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709164800&semt=ais); */
-    background: radial-gradient(#49cced, #2D88FC);
+    /* background: radial-gradient(#6bc1d6, #2D88FC); */
+    background-color: #2D88FC;
 	background-position: center top;
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
@@ -279,11 +284,12 @@ p.description {
 	-o-background-size: cover;
 	background-size: cover;
 	background-attachment: fixed;
-	height: 100%;
+	height: 1000px;
 	overflow: hidden;
 }
 .heading-text{
-	padding-top:120px;
+	padding-top:110px;
+    /* margin-left: 20px; */
 }
 .heading-text .button a i{
     border: 1px solid #585b60;
@@ -305,7 +311,7 @@ p.description {
 }
 p.bannerDescription{
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin-bottom: 65px;
     line-height: 30px;	
 

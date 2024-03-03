@@ -22,8 +22,19 @@ const sendMailToUser = async (email, date) => {
             from: 'utkarshagnihotri7@gmail.com', // Update with your email
             to: email,
             subject: 'Calendar Booking Confirmation',
-            html: `<p>Your Calendar is booked for ${date}.</p>
-                   <p>Please join on time.</p>`
+            html: ` <div style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; text-align: center;">
+            <h2 style="margin-bottom: 10px;">Your Calendar Booking</h2>
+            <p><strong>Hello, Greeting of the day !</strong></p>
+            <p>We are excited to confirm your booking for the upcoming event:</p>
+            <p><strong>Event:</strong> Virtual Team Meeting</p>
+            <p><strong>Date:</strong> ${date}</p>
+            <p><strong>Time:</strong> 10:00 AM - 11:00 AM</p>
+            <p>Please make sure to mark your calendar for this important event. Your participation is greatly appreciated.</p>
+            <p>Click the button below to join the meeting on time:</p>
+            <a href="https://gatherhub.netlify.app/public/room.html?room=3ea89498d" style="display: inline-block; background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px;">Join Now</a>
+            <p>If you have any questions or need further assistance, feel free to contact us.</p>
+            <p>Best regards,<br>Your Team</p>
+        </div>`
         };
 
         // Send email

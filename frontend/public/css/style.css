@@ -373,8 +373,11 @@ input[type="file"] {
 }
 @media (max-width:600px){
   .userImage{
-    margin-right: 15px;
-    margin-top: 40px;
+    margin-right: 33px;
+    /* margin-top: 28px; */
+  }
+  .calenderIcon{
+    margin-top: 28px;
   }
 }
 

@@ -16,7 +16,7 @@
         font-family: Arial, sans-serif;
         margin: 10px;
         padding: 0;
-        background: -webkit-radial-gradient(#38b000,#00509d);
+        background-color: #2D88FC;
     }
 
     nav {
@@ -31,9 +31,10 @@
     }
 
     #calendar {
-        max-width: 750px;
+        max-width: 700px;
         margin: 50px auto;
         border: 2px solid black;
+        border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         background-color: rgb(241, 238, 238);
     }
@@ -56,14 +57,14 @@
 
     .hh {
         color: #000;
-        margin-left: 25%;
+        margin-left: 20%;
     }
 
     #taskForm {
         display: none;
         position: fixed;
-        top: 20%;
-        left: 80%;
+        top: 40%;
+        left: 83%;
         transform: translate(-50%, -50%);
         padding: 20px;
         background-color: #fff;
@@ -88,7 +89,7 @@
     }
 
     button {
-        background: -webkit-linear-gradient(left, #38b000,#00509d);
+        background-color: #2D88FC;
         color: rgb(33, 31, 31);
         padding: 10px 19px;
         border: none;
@@ -97,12 +98,13 @@
     }
 
     button:hover {
-        background-color: #0e4d4f;
+        background-color: #e4e9f0;
+        border: 1px solid black;
     }
 </style>
 
 <body>
-    <h2 class="hh" style="margin-left: 38%; color: #ccc; font-size: 35px;"> 🚀 Schedule your meeting📅</h2>
+    <h2 class="hh" style="margin-left: 33%; color: #ffffff; font-size: 35px;"> 🚀 Schedule your meeting📅</h2>
     <div id="calendar"></div>
 
     <div id="taskForm">

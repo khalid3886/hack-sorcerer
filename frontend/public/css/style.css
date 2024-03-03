@@ -529,7 +529,7 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background-color: #2D88FC;
+  background-color: yellow;
   margin-top: 10px;
 }
 .container-room .left-cont .whiteboard-cont .colors-cont .yellow:hover {
@@ -540,7 +540,7 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background-color: #2D88FC;
+  background-color: green;
   margin-top: 10px;
 }
 
@@ -552,7 +552,7 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background-color: #2D88FC;
+  background-color: orange;
   margin-top: 10px;
 }
 .container-room .left-cont .whiteboard-cont .colors-cont .orange:hover {
@@ -562,7 +562,7 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background-color: #2D88FC;
+  background-color: purple;
   margin-top: 10px;
 }
 .container-room .left-cont .whiteboard-cont .colors-cont .purple:hover {
@@ -582,7 +582,7 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background-color: #2D88FC;
+  background-color: pink;
   margin-top: 10px;
 }
 .container-room .left-cont .whiteboard-cont .colors-cont .pink:hover {
@@ -592,7 +592,7 @@ input[type="file"] {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background-color: #2D88FC;
+  background-color: brown;
   margin-top: 10px;
 }
 .container-room .left-cont .whiteboard-cont .colors-cont .brown:hover {
@@ -1245,7 +1245,7 @@ margin-top: 3%;
   margin-top: 5px;
   margin-bottom: 10px;
   text-align: left;
-  background-color: #2D88FC;
+  background-color: transparent;
   color: white;
   font-weight: 600;
   border: none;

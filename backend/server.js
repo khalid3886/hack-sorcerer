@@ -81,7 +81,9 @@ const cors=require('cors')
 const path = require('path');
 const express = require('express')
 const http = require('http')
-const moment = require('moment');
+// const moment = require('moment');
+const moment = require('moment-timezone');
+
 const {calenderRouter} = require("./route/calender.route")
 const {connection}=require('./db')
 const {userRouter}=require("./route/user.route")
@@ -184,14 +186,18 @@ io.on('connect', socket => {
         socket.to(sid).emit('new icecandidate', candidate, socket.id);
     })
 
-    socket.on('message', (msg, username, roomid) => {
-        // console.log(msg);
-        // console.log("hey")
-        io.to(roomid).emit('message', msg, username, moment().format(
-            "h:mm a"
-        ));
+    // socket.on('message', (msg, username, roomid) => {
+    //     // console.log(msg);
+    //     // console.log("hey")
+    //     io.to(roomid).emit('message', msg, username, moment().format(
+    //         "h:mm a"
+    //     ));
+    
+socket.on('message', (msg, username, roomid) => {
+    io.to(roomid).emit('message', msg, username, moment().tz('Asia/Kolkata').format("h:mm A"));
+})
 
-    })
+    // })
 
     // Attachemnet
     socket.on('file upload', function(fileData, username,roomid) {

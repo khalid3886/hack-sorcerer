@@ -203,9 +203,7 @@ socket.on('message', (msg, username, roomid) => {
     socket.on('file upload', function(fileData, username,roomid) {
         console.log(fileData);
         console.log(username)
-        io.emit('file upload', fileData, username, moment().format(
-            "h:mm a"
-        ));
+        io.emit('file upload', fileData, username, moment().tz('Asia/Kolkata').format("h:mm A"));
         // socket.broadcast.emit("file upload", fileData);
     });
     // attachemnet

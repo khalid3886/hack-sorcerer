@@ -94,7 +94,7 @@ Here are some preview images of the website pages:
 
 
 **Main Room**
-<img src="frontend/assets/mainRoom.png">
+<img src="frontend/assets/maintrans.png">
 
 
 

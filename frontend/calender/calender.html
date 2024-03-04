@@ -146,9 +146,9 @@
             });
 
             // Add task form functionality
-            $('#taskForm button').on('click', function () {
-                addTask();
-            });
+            // $('#taskForm button').on('click', function () {
+            //     addTask();
+            // });
 
             $('#taskForm').on('keyup', function (event) {
                 if (event.key === 'Escape') {
@@ -175,17 +175,17 @@
             let name = $('#name').val();
             let email = $('#email').val();
             let start = $('#taskForm').data('start');
-            let end = $('#taskForm').data('end');
+            // let end = $('#taskForm').data('end');
 
             if (task && name && email) {
                 $('#calendar').fullCalendar('renderEvent', {
                     title: task,
-                    start: start,
-                    end: end
+                    start: start
+                    // end: end
                 }, true);
 
                 // Send email notification
-                sendEmail(task, name, email, start, end);
+                sendEmail(task, name, email, start);
             }
         }
 

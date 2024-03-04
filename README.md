@@ -77,16 +77,24 @@ npm run server  or yarn run server
 Here are some preview images of the website pages:
 
 
+**Landing**
+<img src="frontend/assets/home.png">
+
+
 **Sign In**
-<img src="frontend/assets/Screenshot (287).png">
+<img src="frontend/assets/login.png">
 
 
 **Dashboard**
-<img src="frontend/assets/Screenshot (280).png">
+<img src="frontend/assets/landing.png">
 
 
 **Main Room**
 <img src="frontend/assets/Screenshot (285).png">
+
+
+**Main Room**
+<img src="frontend/assets/maintrans.png">
 
 
 

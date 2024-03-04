@@ -78,7 +78,7 @@ Here are some preview images of the website pages:
 
 
 **Sign In**
-<img src="frontend/assets/Screenshot (287).png">
+<img src="frontend/assets/login.png">
 
 
 **Dashboard**
